@@ -30,5 +30,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite"
+  },
+  "dependencies": {
+    "typeit": "^8.8.3"
   }
 }

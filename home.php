@@ -24,7 +24,7 @@ get_header();
                 <div class="space-y-10">
                     <img src="<?php devcon_msummit2024_get_asset_url('summit_logo.png') ?>"
                          alt="<?php echo get_bloginfo('name') ?>" />
-                    <h1 class="uppercase text-6xl font-extrabold tracking-wide w-[70%]">Weaving Tech for All</h1>
+                    <h1 class="uppercase text-6xl font-extrabold tracking-wide w-full">Weaving Tech<br/>for <span class="type-effect" id="alternating-text"></span></h1>
                     <p class="font-light text-lg">Lorem ipsum dolor sit amet consectetur. Erat felis cras praesent in proin vitae. Nisl turpis sagittis tortor feugiat diam maecenas fermentum vitae pellentesque. Ultrices in neque nunc arcu cras. Hac morbi fusce amet quisque erat. Ac feugiat.</p>
 
                     <div class="flex flex-col items-start lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 text-sm">
