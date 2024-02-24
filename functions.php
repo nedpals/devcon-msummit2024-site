@@ -165,7 +165,7 @@ add_action( 'wp_enqueue_scripts', 'devcon_msummit2024_scripts' );
  * Load default theme font from Google fonts
  */
 function devcon_msummit2024_load_fonts() {
-    $fontFamilies = ['Archivo:wght@100;200;300;400;500', 'Sora:wght@300;400;800'];
+    $fontFamilies = ['Archivo:wght@100;200;300;400;500', 'Sora:wght@300;400;600;700;800'];
     $familiesParameters = implode('&', array_map(fn ($f) => 'family='.$f, $fontFamilies));
 
     echo implode("\n", [
@@ -175,6 +175,11 @@ function devcon_msummit2024_load_fonts() {
     ]);
 }
 add_action('wp_head', 'devcon_msummit2024_load_fonts', 10);
+
+/**
+ * Disable WP admin bar
+ */
+add_filter('show_admin_bar', '__return_false');
 
 /**
  * Custom template tags for this theme.

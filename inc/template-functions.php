@@ -35,3 +35,14 @@ function devcon_msummit2024_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'devcon_msummit2024_pingback_header' );
+
+/**
+ * Returns the url of the theme's assets from the resources directory
+ */
+function devcon_msummit2024_get_asset_url($path, $return = false) {
+	$assetPath = get_template_directory_uri() . '/resources/assets/' . $path;
+	if ($return) {
+		return $assetPath;
+	}
+	echo $assetPath;
+}

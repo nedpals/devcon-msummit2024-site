@@ -565,10 +565,38 @@ textarea {
 @tailwind utilities;
 
 body {
-    @apply font-sans bg-indigo-800 text-white bg-cover bg-top;
-    background-image: url(../assets/bg.webp);
+    @apply font-sans bg-violet-900 text-white bg-cover bg-top antialiased;
 }
 
 .container {
-   @apply max-w-6xl px-8 w-full mx-auto;
+   @apply max-w-7xl px-8 w-full mx-auto;
+}
+
+.section-heading {
+    @apply flex flex-col items-center text-center;
+}
+
+.section-heading h2 {
+    @apply uppercase text-6xl font-extrabold mb-12;
+}
+
+.section-heading p {
+    @apply w-3/4;
+}
+
+.section-heading:after {
+    content: "";
+    @apply block max-w-3xl w-full h-2 mt-10 bg-gradient-to-r from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent;
+}
+
+.section-heading.is-reverse:after {
+    @apply bg-gradient-to-l;
+}
+
+.devcon-default-bg {
+    @apply bg-gradient-to-r from-[#18073F] to-[#37123E];
+}
+
+.devcon-gradient {
+    background-image: linear-gradient(to right, #F2D72E, #DA621D, #8B27FF, #6EB103);
 }

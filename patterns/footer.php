@@ -7,43 +7,15 @@
  */
 ?>
 
-<footer class="bg-gray-900 text-white">
-    <div class="container py-24 flex items-start space-x-12">
-        <img src="<?php echo get_template_directory_uri() ?>/resources/assets/devcon_dvo_vert.png" />
+<footer class="text-white h-24">
+    <div class="container !px-0 py-8 flex items-center space-x-12 border-t border-white/20">
+        <img src="<?php devcon_msummit2024_get_asset_url('devcon_logo.png') ?>" />
 
         <div>
-            <p class="text-xl mb-2">Lorem Ipsum</p>
-
-            <ul class="list-none m-0 font-light">
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <p class="text-xl mb-2">Lorem Ipsum</p>
-
-            <ul class="list-none m-0 font-light">
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <p class="text-xl mb-2">Lorem Ipsum</p>
-
-            <ul class="list-none m-0 font-light">
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
-                <li><a class="text-gray-300" href="#">Lorem ipsum dolor</a></li>
+            <ul class="list-none m-0 font-light flex items-center space-x-6">
+                <li><p>&copy; 2024 DEVCON</p></li>
+                <li><a class="text-gray-300" href="#">DEVCON.ph</a></li>
+                <li><a class="text-gray-300" href="#">Data Privacy Notice</a></li>
             </ul>
         </div>
     </div>
