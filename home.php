@@ -397,67 +397,71 @@ get_header();
             </div>
         </div>
 
-        <div class="flex flex-wrap">
-            <?php $testimonials = [
-                [
-                    'testimony' => "Attended last year's summit and it was amazing! Learned so much and made valuable connections. Can't wait for this year's event!",
-                    'name' => 'John C. Doe',
-                    'role' => 'CEO',
-                    'company' => 'Company ABC Inc.'
-                ],
-                [
-                    'testimony' => "As a first-time attendee, I was blown away by the quality of the sessions and the knowledge of the speakers. Highly recommend the Mindanao DEVCON Summit!",
-                    'name' => 'Jane Smith',
-                    'role' => 'Attendee'
-                ],
-                [
-                    'testimony' => "The Mindanao DEVCON Summit exceeded my expectations. The sessions were informative and the networking opportunities were invaluable. Looking forward to attending again! ",
-                    'name' => 'Mark Johnson',
-                    'role' => 'Volunteer'
-                ]
-            ] ?>
+	    <?php $testimonials = [
+		    [
+			    'testimony' => "Attended last year's summit and it was amazing! Learned so much and made valuable connections. Can't wait for this year's event!",
+			    'name' => 'John C. Doe',
+			    'role' => 'CEO',
+			    'company' => 'Company ABC Inc.'
+		    ],
+		    [
+			    'testimony' => "As a first-time attendee, I was blown away by the quality of the sessions and the knowledge of the speakers. Highly recommend the Mindanao DEVCON Summit!",
+			    'name' => 'Jane Smith',
+			    'role' => 'Attendee'
+		    ],
+		    [
+			    'testimony' => "The Mindanao DEVCON Summit exceeded my expectations. The sessions were informative and the networking opportunities were invaluable. Looking forward to attending again! ",
+			    'name' => 'Mark Johnson',
+			    'role' => 'Volunteer'
+		    ]
+	    ] ?>
 
-            <?php foreach ($testimonials as $testimonial) { ?>
-                <div class="w-1/3 p-4">
-                    <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
-                        <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
-                        <div class="flex items
-                        -center space-x-2 mt-4">
-                            <div class="flex space-x-2">
-                                <p class="font-bold"><?php echo $testimonial['name'] ?></p>
-                                <p class="font-light">
-                                    <?php echo $testimonial['role'] ?>
+        <div class="overflow-hidden flex flex-wrap">
+		    <?php foreach ($testimonials as $testimonial) { ?>
+                <div class="w-[32rem] testimonial-item">
+                    <div class="w-[32rem] p-4">
+                        <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
+                            <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
+                            <div class="flex items-center space-x-2 mt-4">
+                                <div class="flex space-x-2">
+                                    <p class="font-bold"><?php echo $testimonial['name'] ?></p>
+                                    <p class="font-light">
+						                <?php echo $testimonial['role'] ?>
 
-                                    <?php if (isset($testimonial['company'])) { ?>
-                                        <span> at <?php echo $testimonial['company'] ?></span>
-                                    <?php } ?>
-                                </p>
+						                <?php if (isset($testimonial['company'])) { ?>
+                                            <span> at <?php echo $testimonial['company'] ?></span>
+						                <?php } ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+		    <?php } ?>
+        </div>
 
-            <?php foreach ($testimonials as $testimonial) { ?>
-                <div class="w-1/3 p-4">
-                    <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
-                        <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
-                        <div class="flex items
-                        -center space-x-2 mt-4">
-                            <div class="flex space-x-2">
-                                <p class="font-bold"><?php echo $testimonial['name'] ?></p>
-                                <p class="font-light">
-                                    <?php echo $testimonial['role'] ?>
+        <div class="overflow-hidden flex flex-wrap">
+		    <?php foreach ($testimonials as $testimonial) { ?>
+                <div class="w-[32rem] testimonial-item-reverse">
+                    <div class="w-[32rem] p-4">
+                        <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
+                            <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
+                            <div class="flex items-center space-x-2 mt-4">
+                                <div class="flex space-x-2">
+                                    <p class="font-bold"><?php echo $testimonial['name'] ?></p>
+                                    <p class="font-light">
+									    <?php echo $testimonial['role'] ?>
 
-                                    <?php if (isset($testimonial['company'])) { ?>
-                                        <span> at <?php echo $testimonial['company'] ?></span>
-                                    <?php } ?>
-                                </p>
+									    <?php if (isset($testimonial['company'])) { ?>
+                                            <span> at <?php echo $testimonial['company'] ?></span>
+									    <?php } ?>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php } ?>
+		    <?php } ?>
         </div>
     </section>
 
@@ -565,10 +569,10 @@ get_header();
 	                'Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?',
                 ] ?>
 
-                <div class="flex flex-col">
+                <div class="faqs flex flex-col">
                     <?php foreach ($questions as $idx => $question) { ?>
-                        <div class="border-x border-b border-white/20 bg-white/10 py-6 px-8 <?php echo $idx == 0 ? "border-t rounded-t-lg" : ( $idx == count( $questions ) - 1 ? " rounded-b-lg" : "" ) ?>">
-                            <div class="flex items-start">
+                        <div class="faq-item border-x border-b border-white/20 bg-white/10 transition-colors hover:bg-white/30 <?php echo $idx == 0 ? "border-t rounded-t-lg" : ( $idx == count( $questions ) - 1 ? " rounded-b-lg" : "" ) ?>">
+                            <div class="faq-question transition-transform cursor-pointer py-6 px-8 flex items-start">
                                 <p class="font-bold flex-1"><?php echo $question ?></p>
 
                                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -576,11 +580,9 @@ get_header();
                                 </svg>
                             </div>
 
-                            <?php if ($idx == 0) { ?>
-                                <div class="mt-4 pl-4 border-l border-[#A8E54E]">
-                                    <p class="text-sm">Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?</p>
-                                </div>
-                            <?php } ?>
+                            <div class="faq-answer mt-0 mb-6 pl-3 pr-8 ml-8 border-l border-[#A8E54E]">
+                                <p class="text-sm">Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?</p>
+                            </div>
                         </div>
                     <?php } ?>
                 </div>
@@ -602,31 +604,31 @@ get_header();
         </div>
 
         <div class="container flex flex-col items-center">
-           <div class="w-full flex flex-row -mx-4">
+           <div class="event-countdown-timer w-full flex flex-row -mx-4">
                <div class="w-1/4 p-4">
-                   <div class="border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-                       <p class="text-6xl font-extrabold">133</p>
+                   <div class="countdown-days border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
+                       <p class="text-6xl font-extrabold">00</p>
                        <p class="text-4xl font-bold uppercase">Days</p>
                    </div>
                </div>
 
                <div class="w-1/4 p-4">
-                   <div class="border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-                       <p class="text-6xl font-extrabold">22</p>
+                   <div class="countdown-hours border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
+                       <p class="text-6xl font-extrabold">00</p>
                        <p class="text-4xl font-bold uppercase">Hours</p>
                    </div>
                </div>
 
                <div class="w-1/4 p-4">
-                   <div class="border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-                       <p class="text-6xl font-extrabold">29</p>
+                   <div class="countdown-minutes border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
+                       <p class="text-6xl font-extrabold">00</p>
                        <p class="text-4xl font-bold uppercase">Mins</p>
                    </div>
                </div>
 
                <div class="w-1/4 p-4">
-                   <div class="border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-                       <p class="text-6xl font-extrabold">31</p>
+                   <div class="countdown-seconds border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
+                       <p class="text-6xl font-extrabold">00</p>
                        <p class="text-4xl font-bold uppercase">Secs</p>
                    </div>
                </div>

@@ -9,7 +9,7 @@ const texts = [
     'All'
 ];
 
-document.addEventListener("DOMContentLoaded", function() {
+jQuery(function() {
     let typer = new TypeIt("#alternating-text", {
         loop: true,
     });

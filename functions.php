@@ -142,6 +142,8 @@ add_action( 'widgets_init', 'devcon_msummit2024_widgets_init' );
  * Enqueue scripts and styles.
  */
 function devcon_msummit2024_scripts() {
+	wp_enqueue_script('jquery');
+
     Vite\enqueue_asset(
         __DIR__ . '/resources/dist',
         '/resources/js/main.ts',

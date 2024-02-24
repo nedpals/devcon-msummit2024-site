@@ -32,6 +32,10 @@
     "dev": "vite"
   },
   "dependencies": {
+    "@types/jquery": "^3.5.29",
+    "jquery-countdown": "^2.2.0",
+    "jquery.countdown": "^1.2.8",
+    "jquery.marquee": "^1.6.0",
     "typeit": "^8.8.3"
   }
 }
