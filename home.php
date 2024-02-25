@@ -416,7 +416,7 @@ get_header();
 		    ]
 	    ] ?>
 
-        <div class="overflow-hidden flex flex-wrap">
+        <div class="overflow-hidden flex">
 		    <?php foreach ($testimonials as $testimonial) { ?>
                 <div class="w-[32rem] testimonial-item">
                     <div class="w-[32rem] p-4">
@@ -440,7 +440,7 @@ get_header();
 		    <?php } ?>
         </div>
 
-        <div class="overflow-hidden flex flex-wrap">
+        <div class="overflow-hidden flex">
 		    <?php foreach ($testimonials as $testimonial) { ?>
                 <div class="w-[32rem] testimonial-item-reverse">
                     <div class="w-[32rem] p-4">

@@ -1,7 +1,7 @@
+//@ts-nocheck
 import 'jquery.marquee'
 
-//@ts-ignore
-jQuery(".testimonial-item").marquee({
+const defaultMarqueeConfig = {
     duration: 10000,
     allowCss3Support: true,
     pauseOnCycle: true,
@@ -9,16 +9,10 @@ jQuery(".testimonial-item").marquee({
     gap: 1025,
     delayBeforeStart: 0,
     startVisible: true
-});
+}
 
-//@ts-ignore
+jQuery(".testimonial-item").marquee(defaultMarqueeConfig);
 jQuery(".testimonial-item-reverse").marquee({
-    duration: 10000,
-    allowCss3Support: true,
-    pauseOnCycle: true,
-    duplicated: true,
-    direction: 'right',
-    delayBeforeStart: 0,
-    gap: 1025,
-    startVisible: true
+    ...defaultMarqueeConfig,
+    direction: 'right'
 });
