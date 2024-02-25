@@ -1,8 +1,12 @@
 //@ts-nocheck
 import 'jquery-countdown'
 
+declare const window: {
+    countdownDate: string;
+} & Window;
+
 jQuery(function ($) {
-    jQuery(".event-countdown-timer").countdown("2024/06/29", function(event) {
+    jQuery(".event-countdown-timer").countdown(window.countdownDate ?? new Date().getDate(), function(event) {
         const item = $(this).children("div");
 
         item.children(".countdown-days").children("p").first().text(event.strftime('%D'));

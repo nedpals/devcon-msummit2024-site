@@ -551,6 +551,25 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		],
 	]));
 
+	// === Countdown ===
+	$countdown_section = $wp_customize->add_section('devcon-msummit2024_countdown_section', [
+		'title' => __('Countdown', 'devcon-msummit2024'),
+		'panel' => $custom_landing_page_panel->id,
+		'priority' => 25,
+	]);
+
+	// Countdown date
+	$countdown_date_setting = devcon_msummit2024_add_setting($wp_customize, 'countdown_date',  [
+		'default' => '2024-06-29',
+	]);
+
+	(new Kirki\Field\Date([
+		'section' => $countdown_section->id,
+		'settings' => $countdown_date_setting->id,
+		'label' => __('Countdown Date', 'devcon-msummit2024'),
+		'default' => $countdown_date_setting->default,
+	]))->add_control($wp_customize);
+
 	// === Sponsors ===
 	$sponsors_section = $wp_customize->add_section('devcon-msummit2024_sponsors_section', [
 		'title' => __('Sponsors', 'devcon-msummit2024'),

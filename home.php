@@ -754,6 +754,7 @@ get_header();
 
 <script>
     window.alternatingTexts = <?php echo json_encode(devcon_msummit2024_get_theme_mod('hero_alternating_texts', [])) ?>;
+    window.countdownDate = <?php echo json_encode(devcon_msummit2024_get_theme_mod('countdown_date', '')) ?>;
 </script>
 
 <?php get_footer(); ?>
