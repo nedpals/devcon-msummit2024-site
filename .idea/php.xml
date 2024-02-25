@@ -32,13 +32,24 @@
       <path value="$PROJECT_DIR$/vendor/php-parallel-lint/php-parallel-lint" />
       <path value="$PROJECT_DIR$/vendor/kucrut/vite-for-wp" />
       <path value="$PROJECT_DIR$/vendor/phpcompatibility/phpcompatibility-wp" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/pro-src/packages/kirki-pro-headline-divider/vendor/composer" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/pro-src/packages/kirki-pro-input-slider/vendor/composer" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/pro-src/packages/kirki-pro-responsive/vendor/composer" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/kirki-composer/composer" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/pro-src/packages/kirki-pro-tabs/vendor/composer" />
+      <path value="$PROJECT_DIR$/../../plugins/kirki/pro-src/packages/kirki-pro-margin-padding/vendor/composer" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="7.4">
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.3">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
+  </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />
+    </phpunit_settings>
   </component>
   <component name="PsalmOptionsConfiguration">
     <option name="transferred" value="true" />

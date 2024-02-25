@@ -24,8 +24,8 @@ get_header();
                 <div class="space-y-10">
                     <img src="<?php devcon_msummit2024_get_asset_url('summit_logo.png') ?>"
                          alt="<?php echo get_bloginfo('name') ?>" />
-                    <h1 class="uppercase text-6xl font-extrabold tracking-wide w-full">Weaving Tech<br/>for <span class="type-effect" id="alternating-text"></span></h1>
-                    <p class="font-light text-lg">Lorem ipsum dolor sit amet consectetur. Erat felis cras praesent in proin vitae. Nisl turpis sagittis tortor feugiat diam maecenas fermentum vitae pellentesque. Ultrices in neque nunc arcu cras. Hac morbi fusce amet quisque erat. Ac feugiat.</p>
+                    <h1 class="uppercase text-6xl font-extrabold tracking-wide w-full"><?php devcon_msummit2024_render_text('hero_title'); ?></h1>
+                    <p class="font-light text-lg"><?php devcon_msummit2024_render_text('hero_content'); ?></p>
 
                     <div class="flex flex-col items-start lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 text-sm">
                         <div class="flex space-x-2 border border-white/20 bg-white/10 backdrop-blur-md rounded-lg uppercase tracking-widest px-4 py-3">
@@ -33,7 +33,7 @@ get_header();
                                 <path d="M10.9999 10.5416C10.3921 10.5416 9.80924 10.3002 9.37947 9.87043C8.94969 9.44066 8.70825 8.85777 8.70825 8.24998C8.70825 7.64219 8.94969 7.0593 9.37947 6.62953C9.80924 6.19976 10.3921 5.95831 10.9999 5.95831C11.6077 5.95831 12.1906 6.19976 12.6204 6.62953C13.0501 7.0593 13.2916 7.64219 13.2916 8.24998C13.2916 8.55093 13.2323 8.84893 13.1171 9.12696C13.002 9.405 12.8332 9.65763 12.6204 9.87043C12.4076 10.0832 12.1549 10.252 11.8769 10.3672C11.5989 10.4824 11.3009 10.5416 10.9999 10.5416ZM10.9999 1.83331C9.29811 1.83331 7.66601 2.50935 6.46265 3.71271C5.25929 4.91607 4.58325 6.54817 4.58325 8.24998C4.58325 13.0625 10.9999 20.1666 10.9999 20.1666C10.9999 20.1666 17.4166 13.0625 17.4166 8.24998C17.4166 6.54817 16.7405 4.91607 15.5372 3.71271C14.3338 2.50935 12.7017 1.83331 10.9999 1.83331Z" fill="currentColor"/>
                             </svg>
 
-                            <p>123 Pizzaplex, Freddy Fazbear St.</p>
+                            <p><?php devcon_msummit2024_render_text('event_location'); ?></p>
                         </div>
 
                         <div class="flex space-x-2 border border-white/20 bg-white/10 backdrop-blur-md rounded-lg uppercase tracking-widest px-4 py-3">
@@ -49,14 +49,15 @@ get_header();
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <p>June 29-30, 2024</p>
-                            <p>8:00AM - 5:00PM</p>
+                            <p><?php devcon_msummit2024_render_text('event_date'); ?></p>
+                            <p><?php devcon_msummit2024_render_text('event_time'); ?></p>
                         </div>
                     </div>
                 </div>
 
-                <a href="#" class="inline-block bg-[#FFDD00] rounded-lg uppercase no-underline text-gray-900 tracking-widest font-extrabold px-12 py-3 mt-16">
-                    View Pricing
+                <a href="<?php echo devcon_msummit2024_get_theme_mod('cta_button_url'); ?>"
+                   class="inline-block bg-[#FFDD00] rounded-lg uppercase no-underline text-gray-900 tracking-widest font-extrabold px-12 py-3 mt-16">
+                    <?php devcon_msummit2024_render_text('cta_button_text'); ?>
                 </a>
             </div>
         </div>
@@ -73,23 +74,23 @@ get_header();
 
         <div class="relative container !px-0">
             <div class="space-y-8">
+	            <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Overview'); ?>
+
                 <div class="section-heading">
-                    <h2 class="w-full lg:w-3/4">
-                        Welcome to the Mindanao
-                        <img class="inline mr-0 -mt-2" src="<?php devcon_msummit2024_get_asset_url('devcon_logo_2.png') ?>" alt="DEVCON">
-                        Summit
-                    </h2>
-                    <p>We're excited to have you join us for the Mindanao DEVCON Summit! Get ready for an immersive experience filled with insightful sessions, engaging discussions, and networking opportunities.</p>
+                    <h2 class="w-full lg:w-3/4"><?php echo $sectionTitle ?></h2>
+                    <p><?php echo $sectionDescription ?></p>
                 </div>
 
+                <?php $activities = devcon_msummit2024_get_theme_mod('overview_activities', []) ?>
+
                 <div class="flex">
-                    <?php for ($i = 0; $i < 4; $i++) { ?>
+                    <?php foreach ($activities as $activity) { ?>
                         <div class="p-4">
                             <div class="flex flex-col rounded-lg bg-[#180646] shadow-md">
-                                <img src="https://placehold.co/285x280" class="rounded-t-lg" alt="Interactive Workshops">
+                                <img src="<?php echo $activity['image'] ?>" class="rounded-t-lg" alt="<?php echo $activity['name'] ?>">
                                 <div class="bg-gradient-to-t from-[#180646] from-[48%] to-transparent rounded-b-lg -mt-48 pt-48 px-6 pb-6">
-                                    <h3 class="text-xl font-extrabold">Interactive Workshops</h3>
-                                    <p class="text-xs mt-4">Engage in hands-on workshops led by industry experts. Learn new skills and gain practical knowledge in a collaborative environment.</p>
+                                    <h3 class="text-xl font-extrabold"><?php echo $activity['name'] ?></h3>
+                                    <p class="text-xs mt-4"><?php echo $activity['description'] ?></p>
                                 </div>
                             </div>
                         </div>
@@ -103,9 +104,11 @@ get_header();
 <div class="devcon-default-bg">
     <section class="py-24">
         <div class="relative pb-12">
-            <div class="max-w-3xl mx-auto w-full relative section-heading is-reverse">
-                <h2>Program Agenda</h2>
-                <p>Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.</p>
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Program Agenda'); ?>
+
+            <div class="max-w-3xl mx-auto w-full section-heading is-reverse">
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="absolute top-0 inset-x-0 max-w-[82rem] w-full mx-auto flex items-start justify-between mt-[6.7rem]">
@@ -170,9 +173,11 @@ get_header();
              class="absolute top-0 inset-x-0 bg-no-repeat bg-cover bg-left h-full w-full"></div>
 
         <div class="relative container space-y-4">
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Featured Speakers'); ?>
+
             <div class="section-heading is-reverse">
-                <h2>Featured Speakers</h2>
-                <p> Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="flex items-center space-x-2">
@@ -263,9 +268,11 @@ get_header();
              class="2xl:hidden absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-right-bottom h-full w-full"></div>
 
         <div class="container space-y-8">
+            <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Tickets'); ?>
+
             <div class="section-heading">
-                <h2>Tickets</h2>
-                <p>Register for the Mindanao DEVCON Summit and secure your spot today!</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="flex items-center -mx-4">
@@ -391,42 +398,27 @@ get_header();
              class="absolute top-0 inset-x-0 bg-no-repeat bg-cover bg-left h-full w-full"></div>
 
         <div class="relative max-w-3xl mx-auto w-full px-2">
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Testimonials'); ?>
+
             <div class="section-heading pb-8">
-                <h2>Testimonials</h2>
-                <p> Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
         </div>
 
-	    <?php $testimonials = [
-		    [
-			    'testimony' => "Attended last year's summit and it was amazing! Learned so much and made valuable connections. Can't wait for this year's event!",
-			    'name' => 'John C. Doe',
-			    'role' => 'CEO',
-			    'company' => 'Company ABC Inc.'
-		    ],
-		    [
-			    'testimony' => "As a first-time attendee, I was blown away by the quality of the sessions and the knowledge of the speakers. Highly recommend the Mindanao DEVCON Summit!",
-			    'name' => 'Jane Smith',
-			    'role' => 'Attendee'
-		    ],
-		    [
-			    'testimony' => "The Mindanao DEVCON Summit exceeded my expectations. The sessions were informative and the networking opportunities were invaluable. Looking forward to attending again! ",
-			    'name' => 'Mark Johnson',
-			    'role' => 'Volunteer'
-		    ]
-	    ] ?>
+	    <?php $testimonials = devcon_msummit2024_get_theme_mod('testimonials', []) ?>
 
         <div class="overflow-hidden flex">
 		    <?php foreach ($testimonials as $testimonial) { ?>
                 <div class="w-[32rem] testimonial-item">
                     <div class="w-[32rem] p-4">
                         <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
-                            <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
+                            <p class="text-lg font-light h-32">"<?php echo $testimonial['quote'] ?>"</p>
                             <div class="flex items-center space-x-2 mt-4">
                                 <div class="flex space-x-2">
                                     <p class="font-bold"><?php echo $testimonial['name'] ?></p>
                                     <p class="font-light">
-						                <?php echo $testimonial['role'] ?>
+						                <?php echo $testimonial['position'] ?>
 
 						                <?php if (isset($testimonial['company'])) { ?>
                                             <span> at <?php echo $testimonial['company'] ?></span>
@@ -445,12 +437,12 @@ get_header();
                 <div class="w-[32rem] testimonial-item-reverse">
                     <div class="w-[32rem] p-4">
                         <div class="rounded-lg bg-white/10 border border-white/20 px-8 py-6">
-                            <p class="text-lg font-light h-32">"<?php echo $testimonial['testimony'] ?>"</p>
+                            <p class="text-lg font-light h-32">"<?php echo $testimonial['quote'] ?>"</p>
                             <div class="flex items-center space-x-2 mt-4">
                                 <div class="flex space-x-2">
                                     <p class="font-bold"><?php echo $testimonial['name'] ?></p>
                                     <p class="font-light">
-									    <?php echo $testimonial['role'] ?>
+									    <?php echo $testimonial['position'] ?>
 
 									    <?php if (isset($testimonial['company'])) { ?>
                                             <span> at <?php echo $testimonial['company'] ?></span>
@@ -467,9 +459,11 @@ get_header();
 
     <section class="py-24">
         <div class="relative pb-12">
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Sponsorship Packages'); ?>
+
             <div class="max-w-3xl mx-auto w-full relative section-heading is-reverse">
-                <h2>Sponsor this event</h2>
-                <p>Register for the Mindanao DEVCON Summit and secure your spot today!</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="absolute top-0 inset-x-0 max-w-[82rem] w-full mx-auto flex items-start justify-between mt-[6.7rem]">
@@ -478,44 +472,7 @@ get_header();
             </div>
         </div>
 
-        <?php $sponsorship_packages = [
-	        [
-		        'name' => 'Exhibitor',
-		        'slots' => 10,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/exhibitor.png', true),
-		        'description' => 'This package includes: logo visibility on event materials, verbal acknowledgment on-site, website recognition, social media presence, a 45-second video loop, and 2 complimentary sponsor passes.'
-	        ],
-	        [
-		        'name' => 'Bronze',
-		        'slots' => 10,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/bronze.png', true),
-		        'description' => 'This package includes: 45-minute speaking slot, exhibit space (first-come, first-served), 45-sec video loop, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release inclusion, and two complimentary sponsor passes.'
-	        ],
-	        [
-		        'name' => 'Silver',
-		        'slots' => 6,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/silver.png', true),
-		        'description' => 'This package includes: panel & 45-min speaking slots, exhibit space, 2-3 min AVP, 45-sec video loop, three standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, and 2 complimentary sponsor passes.'
-	        ],
-	        [
-		        'name' => 'Gold',
-		        'slots' => 0,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/gold.png', true),
-		        'description' => 'This package includes: keynote and panel slots, 45-min speaking slot, exhibit space, AVP, 45-sec video loop, five standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, attendee list, and three complimentary passes.'
-	        ],
-	        [
-		        'name' => 'Platinum',
-		        'slots' => 2,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/exhibitor.png', true),
-		        'description' => 'This package includes: 1 co-organized event, keynote and panel slots, a 45-min speaking slot, exhibit space, AVP, 45-sec video loop, six standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, logo on event shirt, press release, attendee list, and six complimentary passes.'
-	        ],
-	        [
-		        'name' => 'Co-presenter',
-		        'slots' => 1,
-		        'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/copresenter.png', true),
-		        'description' => 'This package includes the same benefits as all other sponsors + 1 year exposure on all DEVCON Davao events and 2 co-organized events.'
-	        ]
-        ] ?>
+        <?php $sponsorship_packages = devcon_msummit2024_get_theme_mod('sponsorship_packages', []); ?>
 
         <div class="max-w-[95rem] mx-auto w-full px-2 flex flex-wrap items-stretch justify-center">
             <?php foreach ($sponsorship_packages as $package) { ?>
@@ -523,17 +480,17 @@ get_header();
                     <div class="transition-transform scale-100 hover:scale-110 h-full bg-gradient-to-b from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent p-0.5 rounded-2xl">
                         <div class="flex flex-col rounded-2xl bg-[#2F1647] px-8 pt-12 pb-8 h-full">
                             <div class="flex flex-col items-start space-y-4">
-                                <img src="<?php echo $package['icon'] ?>" alt="<?php echo $package['name'] ?>" class="h-16 w-auto">
+                                <img src="<?php echo $package['icon'] ?>" alt="<?php echo $package['title'] ?>" class="h-16 w-auto">
 
                                 <div class="flex flex-wrap items-center">
                                     <h3 class="text-4xl font-extrabold uppercase">
-		                                <?php echo $package['name'] ?>
+		                                <?php echo $package['title'] ?>
                                     </h3>
 
                                     <div class="p-1">
-	                                    <?php if ($package['slots'] > 0) { ?>
+	                                    <?php if ($package['slots_left'] > 0) { ?>
                                             <span class="border border-[#A8E54E] text-[#A8E54E] rounded-full px-3 py-1 text-xs">
-                                            <?php echo $package['slots'] ?> <?php echo $package['slots'] > 1 ? "Slots" : "Slot" ?> Left!
+                                            <?php echo $package['slots_left'] ?> <?php echo $package['slots_left'] > 1 ? "Slots" : "Slot" ?> Left!
                                         </span>
 	                                    <?php } else { ?>
                                             <span class="border border-[#FF823F] text-[#FF823F] rounded-full px-3 py-1 text-xs">
@@ -557,23 +514,20 @@ get_header();
 
     <section class="py-24">
         <div class="container">
+	        <?php [$sectionTitle] = devcon_msummit2024_render_section('FAQs'); ?>
+
             <div class="section-heading pb-24">
-                <h2>Frequently asked questions</h2>
+                <h2><?php echo $sectionTitle ?></h2>
             </div>
 
             <div>
-                <?php $questions = [
-                    'Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?',
-	                'Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?',
-	                'Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?',
-	                'Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?',
-                ] ?>
+                <?php $faq = devcon_msummit2024_get_theme_mod('faq', [])  ?>
 
                 <div class="faqs flex flex-col">
-                    <?php foreach ($questions as $idx => $question) { ?>
-                        <div class="faq-item border-x border-b border-white/20 bg-white/10 transition-colors hover:bg-white/30 <?php echo $idx == 0 ? "border-t rounded-t-lg" : ( $idx == count( $questions ) - 1 ? " rounded-b-lg" : "" ) ?>">
+                    <?php foreach ($faq as $idx => $faqItem) { ?>
+                        <div class="faq-item border-x border-b border-white/20 bg-white/10 transition-colors hover:bg-white/30 <?php echo $idx == 0 ? "border-t rounded-t-lg" : ( $idx == count( $faq ) - 1 ? " rounded-b-lg" : "" ) ?>">
                             <div class="faq-question transition-transform cursor-pointer py-6 px-8 flex items-start">
-                                <p class="font-bold flex-1"><?php echo $question ?></p>
+                                <p class="font-bold flex-1"><?php echo $faqItem['question'] ?></p>
 
                                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M20 12.5L32.5 25L30.75 26.75L20 16L9.25 26.75L7.5 25L20 12.5Z" fill="white"/>
@@ -581,7 +535,7 @@ get_header();
                             </div>
 
                             <div class="faq-answer mt-0 mb-6 pl-3 pr-8 ml-8 border-l border-[#A8E54E]">
-                                <p class="text-sm">Lorem ipsum dolor sit amet consectetur. Habitant turpis diam vitae quis ornare. Vitae et nec tellus ultricies. Adipiscing odio at et feugiat. Faucibus eget nibh vel amet pretium?</p>
+                                <p class="text-sm"><?php echo $faqItem['answer'] ?></p>
                             </div>
                         </div>
                     <?php } ?>
@@ -592,9 +546,11 @@ get_header();
 
     <section class="py-24">
         <div class="relative pb-12">
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Countdown'); ?>
+
             <div class="max-w-3xl mx-auto w-full relative section-heading">
-                <h2>Save the Date!</h2>
-                <p>Tick-tock tech enthusiasts! Get ready for two days packed with innovation, knowledge, and networking.</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="absolute top-0 inset-x-0 max-w-[82rem] w-full mx-auto flex items-start justify-between mt-[4.7rem]">
@@ -648,9 +604,11 @@ get_header();
              class="2xl:hidden absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-bottom h-full w-full"></div>
 
         <div class="relative pb-12">
+	        <?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Social Media Feed'); ?>
+
             <div class="max-w-3xl mx-auto w-full relative section-heading">
-                <h2>See what's going on</h2>
-                <p>Join the conversation on social media using the hashtag #MindanaoDEVCONSummit. Share your thoughts, insights, and photos from the event.</p>
+                <h2><?php echo $sectionTitle ?></h2>
+                <p><?php echo $sectionDescription ?></p>
             </div>
 
             <div class="absolute top-0 inset-x-0 max-w-[82rem] w-full mx-auto flex items-start justify-end mt-[12rem]">
@@ -725,8 +683,10 @@ get_header();
              class="absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-bottom h-full w-full"></div>
 
         <div class="relative container pb-16">
+	        <?php [$sectionTitle] = devcon_msummit2024_render_section('Sponsors List'); ?>
+
             <div class="flex flex-col items-center text-center space-y-4">
-                <h2 class="uppercase text-6xl font-extrabold">DISCOVER the Driving Force Behind THE SUMMIT!</h2>
+                <h2 class="uppercase text-6xl font-extrabold"><?php echo $sectionTitle ?></h2>
             </div>
         </div>
 
@@ -791,6 +751,10 @@ get_header();
         </div>
     </section>
 </div>
+
+<script>
+    window.alternatingTexts = <?php echo json_encode(devcon_msummit2024_get_theme_mod('hero_alternating_texts', [])) ?>;
+</script>
 
 <?php get_footer(); ?>
 

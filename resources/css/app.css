@@ -573,7 +573,7 @@ body {
 }
 
 .section-heading {
-    @apply flex flex-col items-center text-center;
+    @apply relative flex flex-col items-center text-center;
 }
 
 .section-heading h2 {

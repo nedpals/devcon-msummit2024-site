@@ -7,9 +7,7 @@
  * @package devcon-msummit2024
  */
 
-require_once "vendor/autoload.php";
-
-use Kucrut\Vite;
+require_once __DIR__ . "/vendor/autoload.php";
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
@@ -144,7 +142,7 @@ add_action( 'widgets_init', 'devcon_msummit2024_widgets_init' );
 function devcon_msummit2024_scripts() {
 	wp_enqueue_script('jquery');
 
-    Vite\enqueue_asset(
+    \Kucrut\Vite\enqueue_asset(
         __DIR__ . '/resources/dist',
         '/resources/js/main.ts',
         array(
@@ -199,3 +197,9 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Load Kirki customizer file.
+ */
+if (class_exists('Kirki')) {
+	require get_template_directory() . '/inc/kirki-customizer.php';
+}
