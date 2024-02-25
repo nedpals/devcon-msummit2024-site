@@ -19,8 +19,8 @@ jQuery(function() {
             typer = typer.delete(texts[i - 1].length).pause(1000);
         }
 
-        typer = typer.type(texts[i]).pause(1500);
+        typer = typer.type(texts[i]).pause(texts[i] === 'All' ? 5000 : 3000);
     }
 
-    typer = typer.go();
+    typer.go();
 });
