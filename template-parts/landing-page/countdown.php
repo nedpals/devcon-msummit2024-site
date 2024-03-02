@@ -44,6 +44,7 @@
 			</div>
 		</div>
 
-		<button class="w-1/3 text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-16 self-center">Register Now</button>
+		<a href="<?php echo devcon_msummit2024_get_theme_mod('cta_button_url') ?>"
+           class="w-1/3 text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-16 self-center">Register Now</a>
 	</div>
 </section>
