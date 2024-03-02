@@ -739,8 +739,9 @@ get_header();
         ] ?>
 
         <div class="relative max-w-7xl mx-auto w-full px-2">
-            <div class="bg-gradient-to-b from-[rgb(255,221,0)] via-[rgb(205,118,55) to-transparent p-0.5 rounded-2xl">
-                <div class="bg-[#110125] px-20 py-12 flex flex-wrap items-center justify-center rounded-2xl">
+            <div class="flex flex-col bg-gradient-to-b from-[rgb(255,221,0)] via-[rgb(205,118,55)] to-transparent p-0.5 rounded-2xl">
+                <div class="z-[1] bg-[rgb(255,221,0)] text-[#110125] font-bold text-2xl uppercase rounded-xl px-6 py-2 mx-auto -mt-6">Sponsored by</div>
+                <div class="-mt-6 bg-[#110125] px-20 py-12 flex flex-wrap items-center justify-center rounded-2xl">
                     <?php foreach ($sponsors as $sponsor) { ?>
                         <div class="w-1/4 p-6 flex justify-center items-center">
                             <img src="<?php echo $sponsor['image'] ?>" alt="<?php echo $sponsor['name'] ?>" class="w-auto h-auto" />
