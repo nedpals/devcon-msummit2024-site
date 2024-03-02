@@ -453,6 +453,108 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		],
 	]));
 
+	// === Tickets
+	$ticketTiers = [
+		[
+			'label' => '1-day access',
+			'link' => 'https://tickets.devcon.ph/products/30-off-1-day-ticket',
+			'header_class' => '',
+			'price' => 2500,
+			'discount' => 0.3,
+			'perks' => implode("\n", [
+				'Access to all sessions scheduled for Day 1 (June 29, 2024)',
+				'Exclusive merch',
+				'App access to event details',
+				'Access to speakers',
+				'Networking opportunities with industry leaders.'
+			])
+		],
+		[
+			'label' => 'VIP Access',
+			'link' => 'https://tickets.devcon.ph/products/vip-ticket-5',
+			'header_class' => '',
+			'price' => 10000,
+			'perks' => implode("\n", [
+				'Access to all sessions scheduled for 2 Days (June 29 & 30, 2024)',
+				'Exclusive merch, raffle entry and free lunch for 2 days!',
+				'Networking opportunities with industry leaders for meaningful connections',
+				'Engage with our distinguished speakers for insights and inspiration',
+				'Access to speakers',
+				'Backstage, VIP Lounge, and After-Party Access',
+				'Private Lounge: Enjoy a comfortable and exclusive space to enjoy the presentations'
+			])
+		],
+		[
+			'label' => '2-day access',
+			'link' => 'https://tickets.devcon.ph/products/2-days-regular-ticket',
+			'header_class' => '',
+			'price' => 3500,
+			'discount' => 0.3,
+			'perks' => implode("\n", [
+				'Access to all sessions scheduled for 2 Days (June 29 & 30, 2024)',
+				'Exclusive merch',
+				'App access to event details',
+				'Access to speakers',
+				'Networking opportunities with industry leaders.'
+			])
+		]
+	];
+
+	$tickets_section = $wp_customize->add_section('devcon-msummit2024_tickets_section', [
+		'title' => __('Tickets', 'devcon-msummit2024'),
+		'panel' => $custom_landing_page_panel->id,
+		'priority' => 25,
+	]);
+
+	$tickets_setting = devcon_msummit2024_add_setting($wp_customize, 'tickets',  [
+		'default' => $ticketTiers,
+	]);
+
+	(new Kirki\Field\Repeater([
+		'section' => $tickets_section->id,
+		'settings' => $tickets_setting->id,
+		'default' => $tickets_setting->default,
+		'label' => __('Tickets', 'devcon-msummit2024'),
+		'row_label' => [
+			'type' => 'field',
+			'value' => __('Ticket', 'devcon-msummit2024'),
+			'field' => 'label'
+		],
+		'fields' => [
+			'label' => [
+				'type' => 'text',
+				'label' => __('Label', 'devcon-msummit2024'),
+				'default' => 'Ticket Label',
+			],
+			'link' => [
+				'type' => 'text',
+				'label' => __('Link', 'devcon-msummit2024'),
+				'default' => 'Ticket Link',
+			],
+			'header_class' => [
+				'type' => 'text',
+				'label' => __('Header Class', 'devcon-msummit2024'),
+				'default' => 'Header Class',
+			],
+			'price' => [
+				'type' => 'number',
+				'label' => __('Price', 'devcon-msummit2024'),
+				'default' => 'Ticket Price',
+			],
+			'discount' => [
+				'type' => 'number',
+				'label' => __('Discount', 'devcon-msummit2024'),
+				'default' => 0,
+			],
+			'perks' => [
+				'type' => 'textarea',
+				'label' => __('Perks', 'devcon-msummit2024'),
+				'description' => 'Separate each perk with a newline',
+				'default' => 'Ticket Perks',
+			],
+		],
+	]));
+
 	// === Testimonials ===
 	$testimonials_section = $wp_customize->add_section('devcon-msummit2024_testimonials_section', [
 		'title' => __('Testimonials', 'devcon-msummit2024'),
