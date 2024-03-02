@@ -590,6 +590,25 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'default' => $countdown_date_setting->default,
 	]))->add_control($wp_customize);
 
+	// === Social Proof ===
+	$social_proof_section = $wp_customize->add_section('devcon-msummit2024_social_proof_section', [
+		'title' => __('Social Proof', 'devcon-msummit2024'),
+		'panel' => $custom_landing_page_panel->id,
+		'priority' => 25,
+	]);
+
+	$curator_feed_id_setting = devcon_msummit2024_add_setting($wp_customize, 'curator_feed_id',  [
+		'default' => '',
+	]);
+
+	(new Kirki\Field\Text([
+		'section' => $social_proof_section->id,
+		'settings' => $curator_feed_id_setting->id,
+		'label' => __('Curator Feed ID', 'devcon-msummit2024'),
+		'description' => 'The ID of the Curator.io feed to display on the landing page. Leave blank to disable.',
+		'default' => $curator_feed_id_setting->default,
+	]))->add_control($wp_customize);
+
 	// === Sponsors ===
 	$sponsors_section = $wp_customize->add_section('devcon-msummit2024_sponsors_section', [
 		'title' => __('Sponsors', 'devcon-msummit2024'),
