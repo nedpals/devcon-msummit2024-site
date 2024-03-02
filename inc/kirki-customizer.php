@@ -73,6 +73,58 @@ function devcon_msummit2024_render_section($section_name) {
 }
 
 function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_customize) {
+	// Facebook Link
+	$facebook_link_setting = devcon_msummit2024_add_setting($wp_customize, 'facebook_link', [
+		'default' => 'https://www.facebook.com/DevConPH',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	$wp_customize->add_control($facebook_link_setting->id, [
+		'label' => __('Facebook Link', 'devcon-msummit2024'),
+		'section' => 'title_tagline',
+		'type' => 'url',
+		'priority' => 70,
+	]);
+
+	// Instagram Link
+	$instagram_link_setting = devcon_msummit2024_add_setting($wp_customize, 'instagram_link', [
+		'default' => 'https://www.instagram.com/devconph/',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	$wp_customize->add_control($instagram_link_setting->id, [
+		'label' => __('Instagram Link', 'devcon-msummit2024'),
+		'section' => 'title_tagline',
+		'type' => 'url',
+		'priority' => 80,
+	]);
+
+	// Twitter/X Link
+	$twitter_link_setting = devcon_msummit2024_add_setting($wp_customize, 'twitter_link', [
+		'default' => 'https://twitter.com/devconph',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	$wp_customize->add_control($twitter_link_setting->id, [
+		'label' => __('Twitter Link', 'devcon-msummit2024'),
+		'section' => 'title_tagline',
+		'type' => 'url',
+		'priority' => 90,
+	]);
+
+	// Contact us link
+	$contact_us_link_setting = devcon_msummit2024_add_setting($wp_customize, 'contact_us_link', [
+		'default' => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	$wp_customize->add_control($contact_us_link_setting->id, [
+		'label' => __('Contact Us Link', 'devcon-msummit2024'),
+		'section' => 'title_tagline',
+		'type' => 'url',
+		'priority' => 40,
+	]);
+
 	// Load default settings button
 	$load_default_settings_setting = devcon_msummit2024_add_setting($wp_customize, 'load_default_settings', [
 		'default' => false,
