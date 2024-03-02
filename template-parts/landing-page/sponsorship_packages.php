@@ -1,5 +1,8 @@
-<?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Sponsorship Packages'); ?>
-<?php $sponsorship_packages = devcon_msummit2024_get_theme_mod('sponsorship_packages', []); ?>
+<?php
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Sponsorship Packages');
+$sponsorship_packages = devcon_msummit2024_get_theme_mod('sponsorship_packages', []);
+$sponsorship_cta_link = devcon_msummit2024_get_theme_mod('sponsorship_cta_link', '#');
+?>
 
 <section class="py-24">
 	<div class="relative pb-12">
@@ -43,7 +46,7 @@
 
 						<div class="h-full flex flex-col justify-between pt-4">
 							<p class="text-sm text-white/90"><?php echo $package['description'] ?></p>
-							<button class="w-full text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-4">Order Now</button>
+							<a href="<?php echo $sponsorship_cta_link; ?>" class="block w-full text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-4">Order Now</a>
 						</div>
 					</div>
 				</div>

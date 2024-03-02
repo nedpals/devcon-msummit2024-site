@@ -805,6 +805,18 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		],
 	]));
 
+	// Sponsorship package call-to-action link
+	$sponsorship_cta_link_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsorship_cta_link',  [
+		'default' => 'https://www.sponsor.com',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	(new Kirki\Field\URL([
+		'section' => $sponsors_section->id,
+		'settings' => $sponsorship_cta_link_setting->id,
+		'label' => __('Sponsorship Call-to-action Link', 'devcon-msummit2024'),
+		'default' => $sponsorship_cta_link_setting->default,
+	]))->add_control($wp_customize);
 
 	// Sponsors list
 	$sponsors_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors',  [
