@@ -25,10 +25,5 @@ get_header();
     <?php get_template_part('template-parts/landing-page/social-feed' ); ?>
     <?php get_template_part('template-parts/landing-page/sponsors' ); ?>
 </div>
-
-<script>
-    window.alternatingTexts = <?php echo json_encode(devcon_msummit2024_get_theme_mod('hero_alternating_texts', [])) ?>;
-</script>
-
 <?php get_footer(); ?>
 
