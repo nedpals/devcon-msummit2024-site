@@ -577,7 +577,11 @@ body {
 }
 
 .section-heading h2 {
-    @apply uppercase text-6xl font-extrabold mb-12;
+    @apply uppercase text-5xl lg:text-6xl font-extrabold mb-4 lg:mb-12;
+}
+
+.section-heading h2 img {
+    @apply w-60 lg:w-auto;
 }
 
 .section-heading p {
@@ -586,7 +590,7 @@ body {
 
 .section-heading:after {
     content: "";
-    @apply block max-w-3xl w-full h-2 mt-10 bg-gradient-to-r from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent;
+    @apply block max-w-[24rem] lg:max-w-3xl w-full h-2 mt-10 bg-gradient-to-r from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent;
 }
 
 .section-heading.is-reverse:after {

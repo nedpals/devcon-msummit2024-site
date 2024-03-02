@@ -1,4 +1,13 @@
-<?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Countdown'); ?>
+<?php
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Countdown');
+
+$countdown_labels = [
+    'days' => 'Days',
+    'hours' => 'Hours',
+    'minutes' => 'Mins',
+    'seconds' => 'Secs',
+];
+?>
 
 <section class="py-24">
 	<div class="relative pb-12">
@@ -14,38 +23,21 @@
 	</div>
 
 	<div class="container flex flex-col items-center">
-		<div class="event-countdown-timer w-full flex flex-row -mx-4">
-			<div class="w-1/4 p-4">
-				<div class="countdown-days border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-					<p class="text-6xl font-extrabold">00</p>
-					<p class="text-4xl font-bold uppercase">Days</p>
-				</div>
-			</div>
-
-			<div class="w-1/4 p-4">
-				<div class="countdown-hours border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-					<p class="text-6xl font-extrabold">00</p>
-					<p class="text-4xl font-bold uppercase">Hours</p>
-				</div>
-			</div>
-
-			<div class="w-1/4 p-4">
-				<div class="countdown-minutes border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-					<p class="text-6xl font-extrabold">00</p>
-					<p class="text-4xl font-bold uppercase">Mins</p>
-				</div>
-			</div>
-
-			<div class="w-1/4 p-4">
-				<div class="countdown-seconds border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
-					<p class="text-6xl font-extrabold">00</p>
-					<p class="text-4xl font-bold uppercase">Secs</p>
-				</div>
-			</div>
+		<div class="event-countdown-timer w-full flex flex-wrap flex-row -mx-4">
+            <?php foreach ($countdown_labels as $cid => $countdown_label) { ?>
+                <div class="w-1/2 lg:w-1/4 p-4">
+                    <div class="countdown-<?php echo $cid ?> border border-white/20 bg-white/10 flex flex-col text-center items-center rounded-3xl p-6">
+                        <p class="text-6xl font-extrabold">00</p>
+                        <p class="text-4xl font-bold uppercase"><?php echo $countdown_label ?></p>
+                    </div>
+                </div>
+            <?php } ?>
 		</div>
 
 		<a href="<?php echo devcon_msummit2024_get_theme_mod('cta_button_url') ?>"
-           class="w-1/3 text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-16 self-center">Register Now</a>
+           class="w-full md:w-1/3 text-lg text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 mt-16 self-center">
+            Register Now
+        </a>
 	</div>
 </section>
 

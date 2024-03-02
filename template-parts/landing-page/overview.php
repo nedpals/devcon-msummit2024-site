@@ -19,14 +19,14 @@ $activities = devcon_msummit2024_get_theme_mod('overview_activities', []);
 				<p><?php echo $sectionDescription ?></p>
 			</div>
 
-			<div class="flex">
+			<div class="flex flex-wrap">
 				<?php foreach ($activities as $activity) { ?>
-					<div class="p-4">
+					<div class="w-1/2 lg:w-1/4 p-4">
 						<div class="flex flex-col rounded-lg bg-[#180646] shadow-md">
 							<img src="<?php echo $activity['image'] ?>" class="rounded-t-lg" alt="<?php echo $activity['name'] ?>">
 							<div class="bg-gradient-to-t from-[#180646] from-[48%] to-transparent rounded-b-lg -mt-48 pt-48 px-6 pb-6">
 								<h3 class="text-xl font-extrabold"><?php echo $activity['name'] ?></h3>
-								<p class="text-xs mt-4"><?php echo $activity['description'] ?></p>
+								<p class="text-sm mt-4"><?php echo $activity['description'] ?></p>
 							</div>
 						</div>
 					</div>
