@@ -600,3 +600,7 @@ body {
 .devcon-gradient {
     background-image: linear-gradient(to right, #F2D72E, #DA621D, #8B27FF, #6EB103);
 }
+
+footer .menu-item a {
+    @apply text-gray-300 hover:text-gray-400 hover:underline;
+}
