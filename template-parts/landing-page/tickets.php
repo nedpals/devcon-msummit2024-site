@@ -89,7 +89,7 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 							</div>
 						</div>
 
-						<a href="<?php $tier['link'] ?>" target="_blank" class="block w-full text-center bg-[#FFDD00] rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-12">
+						<a href="<?php echo $tier['link'] ?>" target="_blank" class="block w-full text-center bg-[#FFDD00] rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-12">
                             Order Now
                         </a>
 					</div>
