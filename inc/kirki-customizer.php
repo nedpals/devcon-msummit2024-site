@@ -6,6 +6,7 @@
  * @param WP_Customize_Manager $wp_customize
  */
 function devcon_msummit2024_customize_register($wp_customize) {
+	devcon_msummit2024_setup_system_section($wp_customize);
 	devcon_msummit2024_setup_landing_page_customize_section($wp_customize);
 }
 
@@ -69,6 +70,31 @@ function devcon_msummit2024_render_section($section_name) {
 		$sectionTitle,
 		$sectionDescription
 	];
+}
+
+function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_customize) {
+	// === General ===
+	$general_section = $wp_customize->add_section( 'devcon-msummit2024_general_section', [
+		'title'    => __( 'Theme-wide Settings', 'devcon-msummit2024' ),
+		'priority' => 103,
+	] );
+
+	// Load default settings button
+	$load_default_settings_setting = devcon_msummit2024_add_setting($wp_customize, 'load_default_settings', [
+		'default' => false,
+//		'transport' => 'refresh',
+	]);
+
+	$wp_customize->add_control($load_default_settings_setting->id, [
+		'label' => __('Settings Configuration', 'devcon-msummit2024'),
+		'section' => $general_section->id,
+		'settings' => [],
+		'type' => 'button',
+		'input_attrs' => [
+			'value' => 'Load Default Settings',
+			'class' => 'button button-primary',
+		],
+	]);
 }
 
 function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Manager $wp_customize) {
@@ -564,36 +590,42 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/exhibitor.png', true),
 				'title' => 'Exhibitor',
+				'label' => 'Exhibitor',
 				'description' => 'This package includes: logo visibility on event materials, verbal acknowledgment on-site, website recognition, social media presence, a 45-second video loop, and 2 complimentary sponsor passes.',
 				'slots_left' => 10
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/bronze.png', true),
 				'title' => 'Bronze',
+				'label' => 'Bronze',
 				'description' => 'This package includes: 45-minute speaking slot, exhibit space (first-come, first-served), 45-sec video loop, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release inclusion, and two complimentary sponsor passes.',
 				'slots_left' => 10
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/silver.png', true),
 				'title' => 'Silver',
+				'label' => 'Silver',
 				'description' => 'This package includes: panel & 45-min speaking slots, exhibit space, 2-3 min AVP, 45-sec video loop, three standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, and 2 complimentary sponsor passes.',
 				'slots_left' => 6
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/gold.png', true),
 				'title' => 'Gold',
+				'label' => 'Gold',
 				'description' => 'This package includes: keynote and panel slots, 45-min speaking slot, exhibit space, AVP, 45-sec video loop, five standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, attendee list, and three complimentary passes.',
 				'slots_left' => 0
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/platinum.png', true),
 				'title' => 'Platinum',
+				'label' => 'Platinum',
 				'description' => 'This package includes: 1 co-organized event, keynote and panel slots, a 45-min speaking slot, exhibit space, AVP, 45-sec video loop, six standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, logo on event shirt, press release, attendee list, and six complimentary passes.',
 				'slots_left' => 2
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/copresenter.png', true),
 				'title' => 'Co-presenter',
+				'label' => 'Co-presenter',
 				'description' => 'This package includes the same benefits as all other sponsors + 1 year exposure on all DEVCON Davao events and 2 co-organized events.',
 				'slots_left' => 1
 			]
@@ -620,6 +652,11 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 				'type' => 'text',
 				'label' => __('Title', 'devcon-msummit2024'),
 				'default' => 'Package Title',
+			],
+			'label' => [
+				'type' => 'text',
+				'label' => __('Label', 'devcon-msummit2024'),
+				'default' => 'Package Label (for display purposes)',
 			],
 			'description' => [
 				'type' => 'textarea',
@@ -697,9 +734,29 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 }
 
 add_action('customize_register', 'devcon_msummit2024_customize_register');
-add_action('after_switch_theme', function () {
-	// load WP_Customize_Manager
-	include ABSPATH . '/wp-includes/class-wp-customize-manager.php';
 
-	do_action('customize_register', new WP_Customize_Manager());
+add_action('customize_controls_init', function () {
+	wp_enqueue_script( 'devcon-msummit2024-customizer', get_template_directory_uri() . '/resources/js/customizer.js', ['jquery', 'customize-preview' ], _S_VERSION, true );
+	wp_localize_script( 'devcon-msummit2024-customizer', 'devcon_msummit2024_customizer', [
+		'ajax_url' => rest_url(),
+		'nonce' => wp_create_nonce('wp_rest'),
+	]);
+});
+
+add_action('rest_api_init', function() {
+	// AJAX call for the "Load Default Settings" button
+	register_rest_route('devcon-msummit2024/v1', '/theme/load-default', [
+		'methods' => 'POST',
+		'callback' => function (WP_REST_Request $request) {
+			do_action('customize_register', new WP_Customize_Manager());
+
+			return [
+				'success' => true,
+				'message' => 'Default settings loaded successfully.'
+			];
+		},
+		'permission_callback' => function () {
+			return current_user_can('edit_theme_options');
+		}
+	]);
 });

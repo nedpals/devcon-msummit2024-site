@@ -1,4 +1,4 @@
-/* global wp, jQuery */
+/* global wp, devcon_msummit2024_customizer, jQuery */
 /**
  * File customizer.js.
  *
@@ -8,35 +8,21 @@
  */
 
 ( function( $ ) {
-	// Site title and description.
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
-		} );
-	} );
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
-		} );
-	} );
-
-	// Header text color.
-	wp.customize( 'header_textcolor', function( value ) {
-		value.bind( function( to ) {
-			if ( 'blank' === to ) {
-				$( '.site-title, .site-description' ).css( {
-					clip: 'rect(1px, 1px, 1px, 1px)',
-					position: 'absolute',
-				} );
-			} else {
-				$( '.site-title, .site-description' ).css( {
-					clip: 'auto',
-					position: 'relative',
-				} );
-				$( '.site-title a, .site-description' ).css( {
-					color: to,
-				} );
-			}
-		} );
-	} );
+	// Load default settings upon click
+    wp.customize.control('devcon-msummit2024_load_default_settings', function(control) {
+       control.container.find('.button').on('click', function() {
+         $.ajax({
+              url: devcon_msummit2024_customizer.ajax_url + 'devcon-msummit2024/v1/theme/load-default',
+              type: 'POST',
+              beforeSend(jqXHR, settings) {
+                  jqXHR.setRequestHeader('X-WP-Nonce', devcon_msummit2024_customizer.nonce);
+              },
+             success: function( response ) {
+                 if (response.success) {
+                     location.reload();
+                 }
+              }
+         })
+       });
+    });
 }( jQuery ) );
