@@ -401,25 +401,19 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			[
 				'name' => 'John Doe',
 				'position' => 'CEO, Company Name',
-				'photo' => 'https://via.placeholder.com/150x150',
+				'photo' => devcon_msummit2024_get_asset_url('speaker_sample.png', true),
 				'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 			],
 			[
 				'name' => 'Jane Doe',
 				'position' => 'CTO, Company Name',
-				'photo' => 'https://via.placeholder.com/150x150',
+				'photo' => devcon_msummit2024_get_asset_url('speaker_sample_2.png', true),
 				'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 			],
 			[
 				'name' => 'John Smith',
 				'position' => 'Lead Developer, Company Name',
-				'photo' => 'https://via.placeholder.com/150x150',
-				'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-			],
-			[
-				'name' => 'Jane Smith',
-				'position' => 'Lead Designer, Company Name',
-				'photo' => 'https://via.placeholder.com/150x150',
+				'photo' => devcon_msummit2024_get_asset_url('speaker_sample.png', true),
 				'bio' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
 			],
 		],
@@ -676,30 +670,60 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 	$sponsors_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors',  [
 		'default' => [
 			[
-				'name' => 'Microsoft',
-				'logo' => 'https://via.placeholder.com/150x50',
-				'url' => 'https://www.microsoft.com'
+				'name' => 'Mugna',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/mugna.png', true),
+				'url' => 'https://www.mugna.tech'
 			],
 			[
-				'name' => 'Google',
-				'logo' => 'https://via.placeholder.com/150x50',
-				'url' => 'https://www.google.com'
+				'name' => 'StreetWebs',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/street_webs.png', true),
+				'url' => 'https://www.streetwebs.com'
 			],
 			[
-				'name' => 'Facebook',
-				'logo' => 'https://via.placeholder.com/150x50',
-				'url' => 'https://www.facebook.com'
+				'name' => 'Davao Interschool Computer Enthusiasts',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/dice.png', true),
+				'url' => 'https://dicedvo.org'
 			],
 			[
-				'name' => 'Amazon',
-				'logo' => 'https://via.placeholder.com/150x50',
-				'url' => 'https://www.amazon.com'
+				'name' => 'Davao DeFi Community',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/ddc.png', true),
+				'url' => 'https://www.facebook.com/groups/davaodefi'
 			],
 			[
-				'name' => 'Apple',
-				'logo' => 'https://via.placeholder.com/150x50',
-				'url' => 'https://www.apple.com'
+				'name' => 'PWA Pilipinas',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/pwa_pilipinas.png', true),
+				'url' => 'https://www.pwapilipinas.org'
 			],
+			[
+				'name' => 'Blue Salmon Solutions',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/bluesalmon.png', true),
+				'url' => 'https://www.linkedin.com/company/blue-salmon-solutions/'
+			],
+			[
+				'name' => 'UX Davao',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/uxdavao.png', true),
+				'url' => 'https://www.facebook.com/uxdavao'
+			],
+			[
+				'name' => 'UP SPARCS',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/sparcs.png', true),
+				'url' => 'https://www.facebook.com/UPSPARCS'
+			],
+			[
+				'name' => 'IDEAS Davao',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/ideas.png', true),
+				'url' => 'https://www.facebook.com/ideasdavao'
+			],
+			[
+				'name' => 'DICT Region XI',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/dict.png', true),
+				'url' => 'https://www.facebook.com/DICTRegionXI'
+			],
+			[
+				'name' => 'ICT Davao',
+				'logo' => devcon_msummit2024_get_asset_url('sponsors/ict_davao.png', true),
+				'url' => 'https://www.facebook.com/ictdavao'
+			]
 		],
 	]);
 
