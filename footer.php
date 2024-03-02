@@ -4,7 +4,7 @@
  * See: patterns/footer.php
  */
 
-get_template_part('patterns/footer');
+get_template_part('template-parts/footer');
 ?>
 </div><!-- #page -->
 
