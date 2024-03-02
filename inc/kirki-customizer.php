@@ -73,12 +73,6 @@ function devcon_msummit2024_render_section($section_name) {
 }
 
 function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_customize) {
-	// === General ===
-	$general_section = $wp_customize->add_section( 'devcon-msummit2024_general_section', [
-		'title'    => __( 'Theme-wide Settings', 'devcon-msummit2024' ),
-		'priority' => 103,
-	] );
-
 	// Load default settings button
 	$load_default_settings_setting = devcon_msummit2024_add_setting($wp_customize, 'load_default_settings', [
 		'default' => false,
@@ -86,14 +80,16 @@ function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_custom
 	]);
 
 	$wp_customize->add_control($load_default_settings_setting->id, [
-		'label' => __('Settings Configuration', 'devcon-msummit2024'),
-		'section' => $general_section->id,
+		'label' => __('Theme Configuration', 'devcon-msummit2024'),
+		'description' => __('Load default settings for the theme', 'devcon-msummit2024'),
+		'section' => 'title_tagline',
 		'settings' => [],
 		'type' => 'button',
 		'input_attrs' => [
 			'value' => 'Load Default Settings',
 			'class' => 'button button-primary',
 		],
+		'priority' => 100,
 	]);
 }
 
