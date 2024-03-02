@@ -48,3 +48,7 @@
            class="w-1/3 text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-16 self-center">Register Now</a>
 	</div>
 </section>
+
+<script>
+    window.countdownDate = '<?php echo devcon_msummit2024_get_theme_mod('countdown_date') ?>';
+</script>
