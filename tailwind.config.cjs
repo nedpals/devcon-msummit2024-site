@@ -6,7 +6,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./*.php",
     "./inc/**/*.php",
-    "./patterns/**/*.{php,html}",
+    "./template-parts/**/*.{php,html}",
     "./templates/**/*.{php,html}",
     "./parts/**/*.{php,html}"
   ],
