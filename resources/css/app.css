@@ -565,7 +565,7 @@ textarea {
 @tailwind utilities;
 
 body {
-    @apply font-sans bg-violet-900 text-white bg-cover bg-top antialiased;
+    @apply font-sans bg-violet-900 text-white bg-cover bg-top antialiased scroll-smooth;
 }
 
 .container {
