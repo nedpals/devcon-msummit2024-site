@@ -36,8 +36,8 @@ $social_media_svg_icons = [
                 <?php foreach ($social_media_svg_icons as $name => $svg) { ?>
                     <?php $link = devcon_msummit2024_get_theme_mod($name.'_link', '') ?>
 
-	                <?php if (isset($link)) { ?>
-                        <a href="<?php echo $link ?>" class="transition-colors bg-white/10 hover:bg-white/20 border-0 h-auto w-1/3 p-2 flex items-center justify-center rounded-full">
+	                <?php if (!empty($link)) { ?>
+                        <a href="<?php echo $link ?>" class="transition-colors bg-white/10 hover:bg-white/20 border-0 h-auto w-9 p-2 flex items-center justify-center rounded-full">
                             <?php echo $svg ?>
                         </a>
 	                <?php } ?>
