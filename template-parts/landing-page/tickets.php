@@ -34,7 +34,7 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 
 		<div class="flex flex-wrap items-center -mx-4">
             <?php foreach ($ticketTiers as $tierIdx => $tier) { ?>
-			<div class="w-full lg:flex-1 p-4">
+			<div class="w-full flex-none lg:w-auto lg:flex-1 p-4">
 				<div class="rounded-2xl bg-white/10 border border-white/20">
                     <?php $headerClass = implode(' ', [$tier['header_class'], $ticketTiersHeaderClasses[$tierIdx]]); ?>
 
