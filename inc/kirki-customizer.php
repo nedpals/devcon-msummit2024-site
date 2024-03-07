@@ -184,7 +184,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 	];
 
 	$hero_alternating_texts_setting = devcon_msummit2024_add_setting($wp_customize, 'hero_alternating_texts',  [
-		'default' => $default_alternating_texts,
+		'default' => implode(',', $default_alternating_texts),
 //		'transport' => 'refresh',
 		'sanitize_callback' => 'sanitize_text_field',
 	]);
@@ -194,7 +194,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'settings' => $hero_alternating_texts_setting->id,
 		'label' => __('Alternating Texts', 'devcon-msummit2024'),
 		'description' => __('List of alternating texts for hero text (eg. Students, Professionals, All)', 'devcon-msummit2024'),
-		'default' => implode(", ", $default_alternating_texts),
+		'default' => $hero_alternating_texts_setting->default,
 	]))->add_control($wp_customize);
 
 	// Hero content description
@@ -953,6 +953,20 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 				'label' => __('URL', 'devcon-msummit2024'),
 				'default' => 'https://www.sponsor.com',
 			],
+			'tier' => [
+				'type' => 'select',
+				'label' => __('Tier', 'devcon-msummit2024'),
+				'default' => 'Exhibitor',
+				'choices' => array_map(
+					function($it) {
+						return $it['title'];
+					},
+					devcon_msummit2024_get_theme_mod(
+						'sponsorship_packages',
+						$sponsorship_packages_setting->default
+					)
+				),
+			]
 		],
 	]));
 }

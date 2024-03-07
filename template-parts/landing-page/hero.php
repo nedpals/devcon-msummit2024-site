@@ -56,5 +56,5 @@
 </section>
 
 <script>
-    window.alternatingTexts = <?php echo json_encode(devcon_msummit2024_get_theme_mod('hero_alternating_texts', [])) ?>;
+    window.alternatingTexts = <?php echo json_encode(explode(',', devcon_msummit2024_get_theme_mod('hero_alternating_texts', ''))) ?>;
 </script>
