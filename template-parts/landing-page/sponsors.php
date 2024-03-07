@@ -18,7 +18,7 @@
 			<div class="z-[1] bg-[rgb(255,221,0)] text-[#110125] font-bold text-2xl uppercase rounded-xl px-6 py-2 mx-auto -mt-6">Sponsored by</div>
 			<div class="-mt-6 bg-[#110125] px-8 lg:px-20 py-12 flex flex-wrap items-center justify-center rounded-2xl">
 				<?php foreach ($sponsors as $sponsor) { ?>
-					<a href="<?php echo $sponsor['url'] ?>" class="w-1/3 lg:w-1/4 p-6 flex justify-center items-center">
+					<a href="<?php echo $sponsor['url'] ?>" target="_blank" class="w-1/3 lg:w-1/4 p-6 flex justify-center items-center">
 						<img src="<?php echo $sponsor['logo'] ?>" alt="<?php echo $sponsor['name'] ?>" class="w-auto h-auto" />
 					</a>
 				<?php } ?>
