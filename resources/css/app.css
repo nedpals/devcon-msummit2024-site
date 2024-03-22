@@ -601,6 +601,10 @@ body {
     @apply bg-gradient-to-r from-[#18073F] to-[#37123E];
 }
 
+.devcon-bg-2 {
+    background: linear-gradient(90deg, #18073F 0%, #37123E 100%);
+}
+
 .devcon-gradient {
     background-image: linear-gradient(to right, #F2D72E, #DA621D, #8B27FF, #6EB103);
 }

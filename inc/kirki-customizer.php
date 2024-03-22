@@ -1,7 +1,7 @@
 <?php
 
 /* Page Sections */
-$devcon_msummit2024_page_sections = [
+$devcon_msummit2024_landing_page_sections = [
 	[
 		'id' => 'overview',
 		'name' => 'Overview',
@@ -32,6 +32,13 @@ $devcon_msummit2024_page_sections = [
 		'title' => 'Testimonials',
 		'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
 	],
+	[
+		'id' => 'sponsors-cta',
+		'name' => 'Sponsors CTA',
+		'title' => 'Be One of Our Sponsors!',
+		'description' => 'Lorem ipsum dolor sit amet consectetur. Amet leo eu faucibus arcu amet. Non tincidunt sed non vitae ultrices enim. Lacus platea porttitor nisi eu massa. Velit commodo tristique volutpat mauris sed elementum. Nec augue at tortor at. Ac id orci suscipit ornare velit tortor dis in. Orci posuere viverra pharetra viverra est suscipit eu tortor.'
+	],
+	// TODO: move this to a separate section
 	[
 		'id' => 'sponsorship_packages',
 		'name' => 'Sponsorship Packages',
@@ -126,9 +133,9 @@ function devcon_msummit2024_render_text($setting_name, $default = null, $return 
 	return "";
 }
 
-function devcon_msummit2024_render_section($section_name) {
-	$sectionTitle = devcon_msummit2024_render_text('section_' . $section_name . '_title', default: '', return: true );
-	$sectionDescription = devcon_msummit2024_render_text('section_' . $section_name . '_description', default: '', return: true );
+function devcon_msummit2024_render_section($section_id) {
+	$sectionTitle = devcon_msummit2024_render_text('section_' . $section_id . '_title', default: '', return: true );
+	$sectionDescription = devcon_msummit2024_render_text('section_' . $section_id . '_description', default: '', return: true );
 
 	return [
 		$sectionTitle,
@@ -210,7 +217,7 @@ function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_custom
 }
 
 function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Manager $wp_customize) {
-	global $devcon_msummit2024_page_sections;
+	global $devcon_msummit2024_landing_page_sections;
 
 	$custom_landing_page_panel = $wp_customize->add_panel('devcon-msummit2024_landing_page_panel', [
 		'title' => __('Landing Page', 'devcon-msummit2024'),
@@ -848,6 +855,30 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			]
 		],
 	]));
+
+	// Sponsors page call-to-action button label
+	$sponsorship_cta_label_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsorship_page_cta_label',  [
+		'default' => 'Become a Sponsor',
+	]);
+
+	(new Kirki\Field\Text([
+		'section' => $sponsors_section->id,
+		'settings' => $sponsorship_cta_label_setting->id,
+		'label' => __('Sponsorship Page CTA Label', 'devcon-msummit2024'),
+		'default' => $sponsorship_cta_label_setting->default,
+	]))->add_control($wp_customize);
+
+	// Sponsors page call-to-action button link
+	$sponsorship_cta_link_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsorship_page_cta_link');
+
+	(new Kirki\Field\Dropdown_Pages(
+		[
+			'section'  => $sponsors_section->id,
+			'settings' => $sponsorship_cta_link_setting->id,
+			'label'    => 'Sponsorship Page CTA Link',
+			'priority' => 10,
+		]
+	))->add_control($wp_customize);
 
 	// Sponsorship package call-to-action link
 	$sponsorship_cta_link_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsorship_cta_link',  [
