@@ -44,13 +44,6 @@ $devcon_msummit2024_landing_page_sections = [
 		'title' => 'Be One of Our Sponsors!',
 		'description' => 'Lorem ipsum dolor sit amet consectetur. Amet leo eu faucibus arcu amet. Non tincidunt sed non vitae ultrices enim. Lacus platea porttitor nisi eu massa. Velit commodo tristique volutpat mauris sed elementum. Nec augue at tortor at. Ac id orci suscipit ornare velit tortor dis in. Orci posuere viverra pharetra viverra est suscipit eu tortor.'
 	],
-	// TODO: move this to a separate section
-	[
-		'id' => 'sponsorship_packages',
-		'name' => 'Sponsorship Packages',
-		'title' => 'Sponsor this Event',
-		'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
-	],
 	[
 		'id' => 'faqs',
 		'name' => 'FAQs',
@@ -82,6 +75,35 @@ $devcon_msummit2024_landing_page_sections = [
 	]
 ];
 
+$devcon_msummit2024_sponsors_page_sections = [
+	[
+		'id' => 'sponsorship_packages',
+		'name' => 'Sponsorship Packages',
+		'title' => 'Sponsorship Packages',
+		'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
+	],
+	[
+		'id' => 'testimonials',
+		'name' => 'Testimonials',
+	],
+	[
+		'id' => 'faqs',
+		'name' => 'FAQs',
+	],
+	[
+		'id' => 'countdown',
+		'name' => 'Countdown'
+	],
+	[
+		'id' => 'sponsors',
+		'name' => 'Sponsors List',
+	],
+	[
+		'id' => 'social_feed',
+		'name' => 'Social Media Feed',
+	],
+];
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer
  *
@@ -90,6 +112,7 @@ $devcon_msummit2024_landing_page_sections = [
 function devcon_msummit2024_customize_register($wp_customize) {
 	devcon_msummit2024_setup_system_section($wp_customize);
 	devcon_msummit2024_setup_landing_page_customize_section($wp_customize);
+	devcon_msummit2024_setup_sponsors_page_customize_section($wp_customize);
 }
 
 const DEVCON_MSUMMIT_THEME_MOD_PREFIX = 'devcon-msummit2024_';
@@ -145,9 +168,13 @@ function devcon_msummit2024_render_text($setting_name, $default = null, $return 
 	return "";
 }
 
-function devcon_msummit2024_render_section($section_id) {
-	$sectionTitle = devcon_msummit2024_render_text('section_' . $section_id . '_title', default: '', return: true );
-	$sectionDescription = devcon_msummit2024_render_text('section_' . $section_id . '_description', default: '', return: true );
+function devcon_msummit2024_render_section($section_id, $prefix = '') {
+	if (!empty($prefix)) {
+		$prefix .= '_';
+	}
+
+	$sectionTitle = devcon_msummit2024_render_text( $prefix . 'section_' . $section_id . '_title', default: '', return: true );
+	$sectionDescription = devcon_msummit2024_render_text($prefix . 'section_' . $section_id . '_description', default: '', return: true );
 
 	return [
 		$sectionTitle,
@@ -1092,6 +1119,80 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 	]));
 }
 
+function devcon_msummit2024_load_page_sections(array $page_sections, string $name, string $default_parent = ''): void {
+	if (!array_key_exists($name, $page_sections)) {
+		return;
+	}
+
+	foreach ($page_sections[$name] as $section) {
+		// split the last slash and get the last element
+		$pairs = explode('/', $section);
+		$section = end($pairs);
+		$is_enabled = devcon_msummit2024_get_theme_mod('section_' . $section . '_enabled');
+		if (!$is_enabled) {
+			continue;
+		}
+
+		// implode left of the last slash
+		$dir = implode('/', array_slice($pairs, 0, -1));
+		if (empty($dir)) {
+			$dir = $default_parent;
+		}
+
+		get_template_part(implode( '/', ['template-parts', $dir, $section]));
+	}
+}
+
+function devcon_msummit2024_setup_sponsors_page_customize_section(WP_Customize_Manager $wp_customize) {
+	global $devcon_msummit2024_sponsors_page_sections;
+
+	$sponsors_page_panel = $wp_customize->add_panel('devcon-msummit2024_sponsors_page_panel', [
+		'title' => __('Sponsorship Page', 'devcon-msummit2024'),
+		'description' => __('Options for modifying the details to be displayed to the sponsorship page', 'devcon-msummit2024'),
+		'priority' => 110,
+	]);
+
+	// Sponsors page hero section
+	$sponsors_page_hero_section_setting = $wp_customize->add_section('devcon-msummit2024_sponsors_page_hero_section', [
+		'title' => __('Hero', 'devcon-msummit2024'),
+		'panel' => $sponsors_page_panel->id,
+		'priority' => 25,
+	]);
+
+	// Sponsors page hero title
+	$sponsors_page_hero_title_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors_page_hero_title',  [
+		'default' => 'Be One of Our Sponsors!',
+	]);
+
+	(new Kirki\Field\Text([
+		'section' => $sponsors_page_hero_section_setting->id,
+		'settings' => $sponsors_page_hero_title_setting->id,
+		'label' => __('Hero Title', 'devcon-msummit2024'),
+		'default' => $sponsors_page_hero_title_setting->default,
+	]))->add_control($wp_customize);
+
+	// Sponsors page hero description
+	$sponsors_page_hero_description_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors_page_hero_description',  [
+		'default' => 'We are grateful for the support of our sponsors who help make the Mindanao DEVCON Summit possible.',
+	]);
+
+	(new Kirki\Field\Textarea([
+		'section' => $sponsors_page_hero_section_setting->id,
+		'settings' => $sponsors_page_hero_description_setting->id,
+		'label' => __('Hero Description', 'devcon-msummit2024'),
+		'default' => $sponsors_page_hero_description_setting->default,
+	]))->add_control($wp_customize);
+
+	// Section settings
+	$sections_section = $wp_customize->add_section('devcon-msummit2024_sponsors_page_sections_section', [
+		'title' => __('Sections', 'devcon-msummit2024'),
+		'panel' => $sponsors_page_panel->id,
+		'priority' => 30,
+	]);
+
+	devcon_msummit2024_generate_per_section_settings($wp_customize, $sections_section, $devcon_msummit2024_sponsors_page_sections, 'sponsors_page_section_');
+}
+
 function devcon_msummit2024_generate_per_section_settings(WP_Customize_Manager $wp_customize, WP_Customize_Section $sections_section, array $page_sections, string $section_prefix = 'section_') {
 	$section_divider_setting = devcon_msummit2024_add_setting($wp_customize,  $section_prefix .'divider', [
 		'default' => true,
@@ -1112,30 +1213,33 @@ function devcon_msummit2024_generate_per_section_settings(WP_Customize_Manager $
 			'default' => $section_show_setting->default,
 		]))->add_control($wp_customize);
 
-
-		$section_title_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_title', [
-			'default' => $section['title'],
+		if (isset($section['title'])) {
+			$section_title_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_title', [
+				'default' => $section['title'],
 //			'transport' => 'refresh',
-		]);
+			]);
 
-		(new Kirki\Field\Text([
-			'section' => $sections_section->id,
-			'settings' => $section_title_setting->id,
-			'label' => '"'. $section['name'] .'" Title',
-			'default' => $section_title_setting->default,
-		]))->add_control($wp_customize);
+			(new Kirki\Field\Text([
+				'section' => $sections_section->id,
+				'settings' => $section_title_setting->id,
+				'label' => '"'. $section['name'] .'" Title',
+				'default' => $section_title_setting->default,
+			]))->add_control($wp_customize);
+		}
 
-		$section_description_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_description', [
-			'default' => $section['description'] ?? "",
-//			'transport' => 'refresh',
-		]);
+		if (isset($section['description'])) {
+			$section_description_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_description', [
+				'default' => $section['description'] ?? "",
+	//			'transport' => 'refresh',
+			]);
 
-		(new Kirki\Field\Textarea([
-			'section' => $sections_section->id,
-			'settings' => $section_description_setting->id,
-			'label' => '"'. $section['name'] .'" Description',
-			'default' => $section_description_setting->default,
-		]))->add_control($wp_customize);
+			(new Kirki\Field\Textarea([
+				'section' => $sections_section->id,
+				'settings' => $section_description_setting->id,
+				'label' => '"'. $section['name'] .'" Description',
+				'default' => $section_description_setting->default,
+			]))->add_control($wp_customize);
+		}
 
 		(new Kirki\Pro\Field\Divider(
 			[

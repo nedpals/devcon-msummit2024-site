@@ -12,22 +12,6 @@ $page_sections = [
    'upper' => ['overview', 'preevents'],
    'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsors-cta', 'faqs', 'countdown', 'social_feed', 'sponsors', 'cta']
 ];
-
-function load_section(string $name): void {
-    global $page_sections;
-
-     if (!array_key_exists($name, $page_sections)) {
-         return;
-     }
-
-    foreach ($page_sections[$name] as $section) {
-        $is_enabled = devcon_msummit2024_get_theme_mod('section_' . $section . '_enabled');
-        if (!$is_enabled) {
-            continue;
-        }
-        get_template_part('template-parts/landing-page/' . $section);
-    }
-}
 ?>
 
 <div class="devcon-default-bg -mt-16">
@@ -39,11 +23,11 @@ function load_section(string $name): void {
 	    'cta_button_text' => devcon_msummit2024_render_text('cta_button_text', return: true),
 	    'cta_button_url' => devcon_msummit2024_get_theme_mod('cta_button_url', ''),
     ]); ?>
-	<?php load_section('upper'); ?>
+	<?php devcon_msummit2024_load_page_sections($page_sections,'upper', 'landing-page'); ?>
 </div>
 
 <div class="devcon-default-bg">
-	<?php load_section('lower'); ?>
+	<?php devcon_msummit2024_load_page_sections($page_sections,'lower', 'landing-page'); ?>
 </div>
 <?php get_footer(); ?>
 

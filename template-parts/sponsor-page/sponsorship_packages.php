@@ -1,7 +1,7 @@
 <?php
 /** @var $args array */
 
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('sponsorship_packages');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('sponsorship_packages', 'sponsors_page');
 $sponsorship_packages = devcon_msummit2024_get_theme_mod('sponsorship_packages', []);
 $sponsorship_cta_link = devcon_msummit2024_get_theme_mod('sponsorship_cta_link', '#');
 
