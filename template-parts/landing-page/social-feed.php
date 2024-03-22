@@ -49,9 +49,9 @@ if (!empty($curator_feed_id)) {
 
 	<!-- tweets in pinterest layout -->
 	<div class="relative max-w-7xl mx-auto w-full px-2">
-		<div class="columns-3 gap-6 space-y-6">
+		<div class="flex flex-row justify-center gap-6">
 			<?php foreach ($posts as $post) { ?>
-				<a href="<?php echo $post['url'] ?>" class="group hover:shadow-lg hover:scale-105 transition-all block break-inside-avoid bg-white text-gray-900 shadow rounded-xl p-6 space-y-4">
+				<a href="<?php echo $post['url'] ?>" class="w-1/3 group hover:shadow-lg hover:scale-105 transition-all block break-inside-avoid bg-white text-gray-900 shadow rounded-xl p-6 space-y-4">
 					<div class="flex justify-between items-start">
 						<div class="space-y-0.5 flex flex-col text-sm">
 							<span class="group-hover:text-[#110125] font-bold"><?php echo $post['author'] ?></span>
