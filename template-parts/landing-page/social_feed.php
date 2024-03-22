@@ -82,7 +82,7 @@ if (!empty($curator_feed_id)) {
 		</div>
 
         <?php if ($args['feed_button_link'] && $args['feed_button_label']) { ?>
-            <a href="<?php $args['feed_button_link'] ?>" class="self-center mt-12 block w-auto text-center bg-[#FFDD00] rounded-lg text-black text-lg uppercase font-bold tracking-wide border-0 py-3 px-9">
+            <a href="<?php $args['feed_button_link'] ?>" class="btn btn-primary self-center mt-12 block w-auto text-center">
                 <?php echo $args['feed_button_label'] ?>
             </a>
         <?php } ?>

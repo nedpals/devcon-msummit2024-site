@@ -35,7 +35,7 @@ $countdown_labels = [
 		</div>
 
 		<a href="<?php echo devcon_msummit2024_get_theme_mod('cta_button_url') ?>"
-           class="w-full md:w-1/3 text-lg text-center bg-white rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 mt-16 self-center">
+           class="btn btn-white w-full md:w-1/3 text-lg text-center  mt-16 self-center">
             Register Now
         </a>
 	</div>

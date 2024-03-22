@@ -42,7 +42,7 @@ function render_cta(string $text = '') {
         <?php if (!empty($text)) { ?>
             <p><?php echo $text ?></p>
         <?php } ?>
-        <a href="<?php echo ($cta_link ? $cta_link : "#") ?>" class="mx-auto w-3/4 text-center bg-[#FFDD00] rounded-lg text-black text-lg uppercase font-bold tracking-wide border-0 py-3 mt-4">
+        <a href="<?php echo ($cta_link ? $cta_link : "#") ?>" class="btn btn-primary mx-auto w-3/4 text-center mt-4">
             <?php echo $cta_label ?>
         </a>
     </div>

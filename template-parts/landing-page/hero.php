@@ -78,8 +78,7 @@ $args = wp_parse_args($args, [
 			</div>
 
             <?php if (!empty($args['cta_button_text'])) { ?>
-                <a href="<?php echo $args['cta_button_url'] ?>"
-                   class="inline-block bg-[#FFDD00] rounded-lg uppercase no-underline text-gray-900 tracking-widest font-extrabold px-12 py-3 mt-16">
+                <a href="<?php echo $args['cta_button_url'] ?>" class="inline-block btn btn-primary mt-16">
                     <?php echo $args['cta_button_text'] ?>
                 </a>
             <?php } ?>

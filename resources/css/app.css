@@ -634,3 +634,40 @@ ul.footer-menu {
 .footer-menu .menu-item a {
     @apply text-gray-300 hover:text-white hover:underline;
 }
+
+@layer components {
+    .btn {
+        transition-property: color, background-color, box-shadow;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+        @apply rounded-lg shadow-md uppercase no-underline tracking-wide font-extrabold px-9 py-3;
+    }
+
+    .btn:hover {
+        @apply shadow-lg;
+    }
+
+    .btn.btn-primary {
+        @apply bg-[hsl(52deg,100%,50%)] text-[#18073F];
+    }
+
+    .btn.btn-primary:hover {
+        @apply bg-[hsl(52deg,100%,45%)] text-[#18073F];
+    }
+
+    .btn.btn-secondary {
+        @apply bg-[hsl(258deg,80%,14%)] text-[#FFDD00];
+    }
+
+    .btn.btn-secondary:hover {
+        @apply bg-[hsl(258deg,80%,10%)] text-[#FFDD00];
+    }
+
+    .btn.btn-white {
+        @apply bg-white text-black;
+    }
+
+    .btn.btn-white:hover {
+        @apply bg-gray-50 text-black;
+    }
+}
