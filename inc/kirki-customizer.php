@@ -1,5 +1,68 @@
 <?php
 
+/* Page Sections */
+$devcon_msummit2024_page_sections = [
+	[
+		'id' => 'overview',
+		'name' => 'Overview',
+		'title' => 'Welcome to the\n Mindanao [devcon_logo] Summit',
+		'description' => "We're excited to have you join us for the Mindanao DEVCON Summit! Get ready for an immersive experience filled with insightful sessions, engaging discussions, and networking opportunities."
+	],
+	[
+		'id' => 'agenda',
+		'name' => 'Program Agenda',
+		'title' => 'Program Agenda',
+		'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
+	],
+	[
+		'id' => 'speakers',
+		'name' => 'Featured Speakers',
+		'title' => 'Featured Speakers',
+		'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
+	],
+	[
+		'id' => 'tickets',
+		'name' => 'Tickets',
+		'title' => 'Tickets',
+		'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
+	],
+	[
+		'id' => 'testimonials',
+		'name' => 'Testimonials',
+		'title' => 'Testimonials',
+		'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
+	],
+	[
+		'id' => 'sponsorship_packages',
+		'name' => 'Sponsorship Packages',
+		'title' => 'Sponsor this Event',
+		'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
+	],
+	[
+		'id' => 'faqs',
+		'name' => 'FAQs',
+		'title' => 'Frequently Asked Questions',
+	],
+	[
+		'id' => 'countdown',
+		'name' => 'Countdown',
+		'title' => 'Save the Date!',
+		'description' => 'Tick-tock tech enthusiasts! Get ready for two days packed with innovation, knowledge, and networking.'
+	],
+	[
+		'id' => 'social_feed',
+		'name' => 'Social Media Feed',
+		'title' => "See what's going on",
+		'description' => 'Join the conversation on social media using the hashtag #MindanaoDEVCONSummit. Share your thoughts, insights, and photos from the event.'
+	],
+	[
+		'id' => 'sponsors',
+		'name' => 'Sponsors List',
+		'title' => 'Discover the driving force behind the summit!',
+		'description' => ''
+	]
+];
+
 /**
  * Add postMessage support for site title and description for the Theme Customizer
  *
@@ -147,6 +210,8 @@ function devcon_msummit2024_setup_system_section(WP_Customize_Manager $wp_custom
 }
 
 function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Manager $wp_customize) {
+	global $devcon_msummit2024_page_sections;
+
 	$custom_landing_page_panel = $wp_customize->add_panel('devcon-msummit2024_landing_page_panel', [
 		'title' => __('Landing Page', 'devcon-msummit2024'),
 		'description' => __('Options for modifying the details to be displayed to the homepage', 'devcon-msummit2024'),
@@ -285,71 +350,25 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'priority' => 20,
 	]);
 
-	$sections = [
-		[
-			'name' => 'Overview',
-			'title' => 'Welcome to the\n Mindanao [devcon_logo] Summit',
-			'description' => "We're excited to have you join us for the Mindanao DEVCON Summit! Get ready for an immersive experience filled with insightful sessions, engaging discussions, and networking opportunities."
-		],
-		[
-			'name' => 'Program Agenda',
-			'title' => 'Program Agenda',
-			'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
-		],
-		[
-			'name' => 'Featured Speakers',
-			'title' => 'Featured Speakers',
-			'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
-		],
-		[
-			'name' => 'Tickets',
-			'title' => 'Tickets',
-			'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
-		],
-		[
-			'name' => 'Testimonials',
-			'title' => 'Testimonials',
-			'description' => 'Get to know our lineup of prominent speakers who will be sharing their expertise at the Mindanao DEVCON Summit.'
-		],
-		[
-			'name' => 'Sponsorship Packages',
-			'title' => 'Sponsor this Event',
-			'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
-		],
-		[
-			'name' => 'FAQs',
-			'title' => 'Frequently Asked Questions',
-		],
-		[
-			'name' => 'Countdown',
-			'title' => 'Save the Date!',
-			'description' => 'Tick-tock tech enthusiasts! Get ready for two days packed with innovation, knowledge, and networking.'
-		],
-		[
-			'name' => 'Social Media Feed',
-			'title' => "See what's going on",
-			'description' => 'Join the conversation on social media using the hashtag #MindanaoDEVCONSummit. Share your thoughts, insights, and photos from the event.'
-		],
-		[
-			'name' => 'Sponsors List',
-			'title' => 'Discover the driving force behind the summit!',
-			'description' => ''
-		]
-	];
+	$section_divider_setting = devcon_msummit2024_add_setting($wp_customize, 'section_divider', [
+		'default' => true,
+	]);
 
-	foreach ($sections as $section) {
-		$sectionId = devcon_msummit2024_get_mod_id( 'section_' . $section['name']);
-		$section_headline_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_headline', [
-			'default' => $section['name'],
+	foreach ($devcon_msummit2024_page_sections as $section) {
+		$sectionId = devcon_msummit2024_get_mod_id( 'section_' . $section['id']);
+
+		// Add setting for showing specific section
+		$section_show_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_enabled', [
+			'default' => true,
 		]);
 
-		(new Kirki\Pro\Field\Headline([
+		(new Kirki\Pro\Field\HeadlineToggle([
 			'section' => $sections_section->id,
-			'settings' => $section_headline_setting->id,
+			'settings' => $section_show_setting->id,
 			'label' => $section['name'],
-			'default' => $section_headline_setting->default,
-			'description' => 'Section Headline',
+			'default' => $section_show_setting->default,
 		]))->add_control($wp_customize);
+
 
 		$section_title_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_title', [
 			'default' => $section['title'],
@@ -374,6 +393,13 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			'label' => '"'. $section['name'] .'" Description',
 			'default' => $section_description_setting->default,
 		]))->add_control($wp_customize);
+
+		(new Kirki\Pro\Field\Divider(
+			[
+				'settings' => $section_divider_setting->id,
+				'section'  => $sections_section->id,
+			]
+		))->add_control($wp_customize);
 	}
 
 	// === Overview ===
