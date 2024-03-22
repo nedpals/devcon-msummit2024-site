@@ -19,6 +19,8 @@ $sponsorship_cta_link = devcon_msummit2024_get_theme_mod('sponsorship_cta_link',
 
 	<div class="max-w-[95rem] mx-auto w-full px-2 flex flex-wrap items-stretch justify-center">
 		<?php foreach ($sponsorship_packages as $package) { ?>
+            <?php if (isset($package['show']) && !$package['show']) continue; ?>
+
 			<div class="w-full md:w-1/2 lg:w-1/3 p-4">
 				<div class="transition-transform scale-100 hover:scale-110 h-full bg-gradient-to-b from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent p-0.5 rounded-2xl">
 					<div class="flex flex-col rounded-2xl bg-[#2F1647] px-8 pt-12 pb-8 h-full">

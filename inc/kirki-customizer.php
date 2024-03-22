@@ -12,7 +12,7 @@ function devcon_msummit2024_customize_register($wp_customize) {
 
 const DEVCON_MSUMMIT_THEME_MOD_PREFIX = 'devcon-msummit2024_';
 
-function devcon_msummit2024_get_mod_id($id) {
+function devcon_msummit2024_get_mod_id($id): string {
 	$mod_id = strtolower(str_replace(' ', '_', $id));
 	if ( !str_starts_with( $mod_id, DEVCON_MSUMMIT_THEME_MOD_PREFIX ) ) {
 		return DEVCON_MSUMMIT_THEME_MOD_PREFIX . $mod_id;
@@ -774,42 +774,56 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 				'title' => 'Exhibitor',
 				'label' => 'Exhibitor',
 				'description' => 'This package includes: logo visibility on event materials, verbal acknowledgment on-site, website recognition, social media presence, a 45-second video loop, and 2 complimentary sponsor passes.',
-				'slots_left' => 10
+				'slots_left' => 10,
+				'show' => true
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/bronze.png', true),
 				'title' => 'Bronze',
 				'label' => 'Bronze',
 				'description' => 'This package includes: 45-minute speaking slot, exhibit space (first-come, first-served), 45-sec video loop, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release inclusion, and two complimentary sponsor passes.',
-				'slots_left' => 10
+				'slots_left' => 10,
+				'show' => true
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/silver.png', true),
 				'title' => 'Silver',
 				'label' => 'Silver',
 				'description' => 'This package includes: panel & 45-min speaking slots, exhibit space, 2-3 min AVP, 45-sec video loop, three standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, and 2 complimentary sponsor passes.',
-				'slots_left' => 6
+				'slots_left' => 6,
+				'show' => true
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/gold.png', true),
 				'title' => 'Gold',
 				'label' => 'Gold',
 				'description' => 'This package includes: keynote and panel slots, 45-min speaking slot, exhibit space, AVP, 45-sec video loop, five standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, press release, attendee list, and three complimentary passes.',
-				'slots_left' => 0
+				'slots_left' => 0,
+				'show' => true
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/platinum.png', true),
 				'title' => 'Platinum',
 				'label' => 'Platinum',
 				'description' => 'This package includes: 1 co-organized event, keynote and panel slots, a 45-min speaking slot, exhibit space, AVP, 45-sec video loop, six standee placements, onsite acknowledgment, literature inclusion, logo visibility, social media mentions, logo on event shirt, press release, attendee list, and six complimentary passes.',
-				'slots_left' => 2
+				'slots_left' => 2,
+				'show' => true
 			],
 			[
 				'icon' => devcon_msummit2024_get_asset_url('sponsorship_packages/copresenter.png', true),
 				'title' => 'Co-presenter',
 				'label' => 'Co-presenter',
 				'description' => 'This package includes the same benefits as all other sponsors + 1 year exposure on all DEVCON Davao events and 2 co-organized events.',
-				'slots_left' => 1
+				'slots_left' => 1,
+				'show' => true
+			],
+			[
+				'icon' => '',
+				'title' => 'Supporter',
+				'label' => 'Supported by',
+				'description' => 'This package includes: logo visibility on event materials, verbal acknowledgment on-site, website recognition, social media presence, and 1 complimentary sponsor pass.',
+				'slots_left' => 0,
+				'show' => false
 			]
 		],
 	]);
@@ -850,6 +864,11 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 				'label' => __('Slots Left', 'devcon-msummit2024'),
 				'default' => 10,
 			],
+			'show' => [
+				'type' => 'checkbox',
+				'label' => __('Show on page?', 'devcon-msummit2024'),
+				'default' => true,
+			]
 		],
 	]));
 
@@ -867,7 +886,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 	]))->add_control($wp_customize);
 
 	// Sponsors list
-	$sponsors_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors',  [
+	$sponsors_setting = devcon_msummit2024_add_setting($wp_customize, 'sponsors', [
 		'default' => [
 			[
 				'name' => 'Mugna',
@@ -956,14 +975,16 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			'tier' => [
 				'type' => 'select',
 				'label' => __('Tier', 'devcon-msummit2024'),
-				'default' => 'Exhibitor',
-				'choices' => array_map(
-					function($it) {
-						return $it['title'];
-					},
-					devcon_msummit2024_get_theme_mod(
-						'sponsorship_packages',
-						$sponsorship_packages_setting->default
+				'default' => 'Supporter',
+				'choices' => array_merge(
+					...array_map(
+						function($it) {
+							return [$it['title'] => $it['title']];
+						},
+						array_reverse(devcon_msummit2024_get_theme_mod(
+							'sponsorship_packages',
+							$sponsorship_packages_setting->default
+						))
 					)
 				),
 			]
