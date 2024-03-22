@@ -9,6 +9,12 @@ $devcon_msummit2024_landing_page_sections = [
 		'description' => "We're excited to have you join us for the Mindanao DEVCON Summit! Get ready for an immersive experience filled with insightful sessions, engaging discussions, and networking opportunities."
 	],
 	[
+		'id' => 'preevents',
+		'name' => 'Pre-events',
+		'title' => 'Pre-events',
+		'description' => 'Join us for a series of pre-events that will set the stage for the Mindanao DEVCON Summit. Participate in interactive workshops, tech talks, networking sessions, and a career fair.'
+	],
+	[
 		'id' => 'agenda',
 		'name' => 'Program Agenda',
 		'title' => 'Program Agenda',
@@ -403,6 +409,61 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'settings' => $overview_activities_setting->id,
 		'default' => $overview_activities_setting->default,
 		'label' => __('Overview Activities', 'devcon-msummit2024'),
+		'row_label' => [
+			'type' => 'field',
+			'value' => __('Activity', 'devcon-msummit2024'),
+			'field' => 'name'
+		],
+		'fields' => [
+			'image' => [
+				'type' => 'image',
+				'label' => __('Image', 'devcon-msummit2024'),
+				'default' => 'https://via.placeholder.com/285x280',
+			],
+			'name' => [
+				'type' => 'text',
+				'label' => __('Name', 'devcon-msummit2024'),
+				'default' => 'Activity Name',
+			],
+			'description' => [
+				'type' => 'textarea',
+				'label' => __('Description', 'devcon-msummit2024'),
+				'default' => 'Activity Description',
+			],
+		],
+	]));
+
+	// Pre-events (consists of image, activity name, and description)
+	$preevents_setting = devcon_msummit2024_add_setting($wp_customize, 'preevents',  [
+		'default' => [
+			[
+				'image' => 'https://via.placeholder.com/285x280',
+				'name' => 'Interactive Workshops',
+				'description' => 'Engage in hands-on workshops led by industry experts. Learn new skills and gain practical knowledge in a collaborative environment.'
+			],
+			[
+				'image' => 'https://via.placeholder.com/285x280',
+				'name' => 'Tech Talks',
+				'description' => 'Hear from prominent speakers and thought leaders as they share their insights and expertise on the latest trends and innovations in tech.'
+			],
+			[
+				'image' => 'https://via.placeholder.com/285x280',
+				'name' => 'Networking',
+				'description' => 'Connect with fellow tech enthusiasts, industry professionals, and potential employers. Share ideas, collaborate, and build lasting relationships.'
+			],
+			[
+				'image' => 'https://via.placeholder.com/285x280',
+				'name' => 'Career Fair',
+				'description' => 'Explore career opportunities and connect with potential employers. Get to know the companies and organizations that are looking to hire tech talent.'
+			],
+		],
+	]);
+
+	(new Kirki\Field\Repeater([
+		'section' => $overview_section->id,
+		'settings' => $preevents_setting->id,
+		'default' => $preevents_setting->default,
+		'label' => __('Pre-events', 'devcon-msummit2024'),
 		'row_label' => [
 			'type' => 'field',
 			'value' => __('Activity', 'devcon-msummit2024'),

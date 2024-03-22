@@ -3,7 +3,7 @@
 $activities = devcon_msummit2024_get_theme_mod('overview_activities', []);
 ?>
 
-<section class="relative py-24 px-0.5">
+<section class="relative px-0.5">
 	<!-- Show full version of background image for larger screens -->
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('overview_bg.png') ?>)"
 	     class="hidden 2xl:block absolute top-0 inset-x-0 bg-no-repeat bg-contain bg-left-bottom h-full w-full"></div>
@@ -12,7 +12,7 @@ $activities = devcon_msummit2024_get_theme_mod('overview_activities', []);
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('overview_bg_half.png') ?>)"
 	     class="2xl:hidden absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-bottom h-full w-full"></div>
 
-	<div class="relative container !px-0">
+	<div class="relative container !px-0 py-24 border-b border-white/25">
 		<div class="space-y-8">
 			<div class="section-heading">
 				<h2 class="w-full lg:w-3/4"><?php echo $sectionTitle ?></h2>
