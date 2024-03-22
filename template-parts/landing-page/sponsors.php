@@ -48,7 +48,7 @@ function categorize_sponsors($sponsors): array {
 $sponsors_by_tier = categorize_sponsors($sponsors);
 ?>
 
-<section class="relative pt-4 pb-[18rem] lg:pb-36 -mb-64 lg:-mb-28">
+<section class="relative py-24">
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('sponsorship_bg.png') ?>)"
 	     class="absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-bottom h-full w-full"></div>
 

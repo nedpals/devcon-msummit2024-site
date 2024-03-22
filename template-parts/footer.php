@@ -7,7 +7,7 @@
  */
 ?>
 
-<footer class="relative text-white h-24 pl-4 lg:pl-0">
+<footer class="devcon-default-bg relative text-white pl-4 lg:pl-0">
     <div class="container w-full !px-0 py-8 flex flex-col lg:flex-row items-center border-t border-white/20">
         <img src="<?php devcon_msummit2024_get_asset_url('devcon_logo.png') ?>" />
 
