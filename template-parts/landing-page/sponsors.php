@@ -50,7 +50,7 @@ $sponsors_by_tier = categorize_sponsors($sponsors);
 
 <section class="relative py-24">
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('sponsorship_bg.png') ?>)"
-	     class="absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-bottom h-full w-full"></div>
+	     class="absolute top-0 inset-x-0 bg-no-repeat bg-cover md:bg-[length:100%] bg-left-top h-full w-full"></div>
 
 	<div class="relative container pb-16">
 		<div class="flex flex-col items-center text-center space-y-4">
