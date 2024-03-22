@@ -1,23 +1,33 @@
 <?php
+/** @var $args array */
+
 [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Sponsorship Packages');
 $sponsorship_packages = devcon_msummit2024_get_theme_mod('sponsorship_packages', []);
 $sponsorship_cta_link = devcon_msummit2024_get_theme_mod('sponsorship_cta_link', '#');
+
+$args = wp_parse_args($args, [
+    'header' => true,
+    'container_width_class' => 'max-w-[95rem] mx-auto w-full',
+    'container_padding' => 'px-2'
+]);
 ?>
 
 <section class="py-24">
+	<?php if ($args['header']) { ?>
 	<div class="relative pb-12">
 		<div class="max-w-3xl mx-auto w-full relative section-heading is-reverse">
 			<h2><?php echo $sectionTitle ?></h2>
 			<p><?php echo $sectionDescription ?></p>
 		</div>
 
-		<div class="absolute top-0 inset-x-0 max-w-[82rem] w-full mx-auto flex items-start justify-between mt-[6.7rem]">
-			<img class="mt-[4rem]" src="<?php devcon_msummit2024_get_asset_url('dots_left.png') ?>" />
-			<img class="h-auto" src="<?php devcon_msummit2024_get_asset_url('dots_right.png') ?>" />
-		</div>
+        <div class="max-w-[82rem] w-full mx-auto absolute top-0 inset-x-0 flex items-start justify-between mt-[6.7rem]">
+            <img class="mt-[4rem]" src="<?php devcon_msummit2024_get_asset_url('dots_left.png') ?>" />
+            <img class="h-auto" src="<?php devcon_msummit2024_get_asset_url('dots_right.png') ?>" />
+        </div>
 	</div>
+	<?php } ?>
 
-	<div class="max-w-[95rem] mx-auto w-full px-2 flex flex-wrap items-stretch justify-center">
+	<div class="<?php echo $args['container_width_class'] ?> <?php echo $args['container_padding'] ?> flex flex-wrap items-stretch justify-center">
 		<?php foreach ($sponsorship_packages as $package) { ?>
             <?php if (isset($package['show']) && !$package['show']) continue; ?>
 

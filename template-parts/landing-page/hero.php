@@ -10,20 +10,26 @@ $args = wp_parse_args($args, [
     'alternating_texts' => '',
     'cta_button_text' => '',
     'cta_button_url' => '',
+    'background_waves' => true,
+    'container_width_class' => 'container',
+    'outer_container_padding' => 'pt-16',
+    'inner_container_padding' => 'py-32',
+    'divider' => true,
 ]);
-
 ?>
 
-<section class="relative pt-16 overflow-x-hidden">
-	<!-- Show full wave for large screens -->
-	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('hero_waves.png') ?>);"
-	     class="absolute top-0 right-0 hidden lg:block left-[63%] 2xl:left-[57%] h-full max-w-[58rem] w-full bg-cover bg-no-repeat bg-[-20%] sm:bg-[-40%] md:[100%] lg:bg-[100%_0%] px-0"></div>
+<section class="<?php if ($args['background_waves']) { ?>relative<?php } ?> <?php echo $args['outer_container_padding'] ?> overflow-x-hidden">
+    <?php if ($args['background_waves']) { ?>
+        <!-- Show full wave for large screens -->
+        <div style="background-image: url(<?php devcon_msummit2024_get_asset_url('hero_waves.png') ?>);"
+             class="absolute top-0 right-0 hidden lg:block left-[63%] 2xl:left-[57%] h-full max-w-[58rem] w-full bg-cover bg-no-repeat bg-[-20%] sm:bg-[-40%] md:[100%] lg:bg-[100%_0%] px-0"></div>
 
-	<!-- Show half-wave for mobile devices up to desktop -->
-	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('hero_waves_half.png') ?>);"
-	     class="absolute top-0 inset-x-0 lg:hidden h-full w-full bg-right bg-no-repeat bg-cover sm:bg-contain px-0"></div>
+        <!-- Show half-wave for mobile devices up to desktop -->
+        <div style="background-image: url(<?php devcon_msummit2024_get_asset_url('hero_waves_half.png') ?>);"
+             class="absolute top-0 inset-x-0 lg:hidden h-full w-full bg-right bg-no-repeat bg-cover sm:bg-contain px-0"></div>
+    <?php } ?>
 
-	<div class="relative container py-32 border-b border-white/25">
+	<div class="<?php if ($args['background_waves']) { ?>relative<?php } ?> <?php echo $args['container_width_class'] ?> <?php echo $args['inner_container_padding'] ?> <?php if ($args['divider']) { ?>border-b border-white/25<?php } ?>">
 		<div class="w-full lg:w-3/4">
 			<div class="space-y-10">
 				<img src="<?php devcon_msummit2024_get_asset_url('summit_logo.png') ?>"
