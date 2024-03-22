@@ -10,7 +10,7 @@ get_header();
 
 $page_sections = [
    'upper' => ['overview'],
-   'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsors-cta', 'faqs', 'countdown', 'social-feed', 'sponsors', 'cta']
+   'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsors-cta', 'faqs', 'countdown', 'social_feed', 'sponsors', 'cta']
 ];
 
 function load_section(string $name): void {

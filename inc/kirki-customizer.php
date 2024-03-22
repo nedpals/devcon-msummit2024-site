@@ -749,6 +749,31 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'default' => $curator_feed_id_setting->default,
 	]))->add_control($wp_customize);
 
+	// Feed button link
+	$feed_button_link_setting = devcon_msummit2024_add_setting($wp_customize, 'feed_button_link', [
+		'default' => '#',
+		'sanitize_callback' => 'esc_url_raw',
+	]);
+
+	$wp_customize->add_control($feed_button_link_setting->id, [
+		'label' => __('Feed Button Link', 'devcon-msummit2024'),
+		'section' => $social_proof_section->id,
+		'type' => 'url',
+		'priority' => 10,
+	]);
+
+	// Feed button text
+	$feed_button_text_setting = devcon_msummit2024_add_setting($wp_customize, 'feed_button_text', [
+		'default' => 'Join the Conversation',
+	]);
+
+	$wp_customize->add_control($feed_button_text_setting->id, [
+		'label' => __('Feed Button Text', 'devcon-msummit2024'),
+		'section' => $social_proof_section->id,
+		'type' => 'text',
+		'priority' => 20,
+	]);
+
 	// === Sponsors ===
 	$sponsors_section = $wp_customize->add_section('devcon-msummit2024_sponsors_section', [
 		'title' => __('Sponsors', 'devcon-msummit2024'),

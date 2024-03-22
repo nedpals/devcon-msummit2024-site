@@ -1,4 +1,11 @@
 <?php
+/* @var $args array */
+
+$args = wp_parse_args($args, [
+    'feed_button_link' => devcon_msummit2024_get_theme_mod('feed_button_link', '#'),
+    'feed_button_label' => devcon_msummit2024_get_theme_mod('feed_button_label', 'View More')
+]);
+
 [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('social_feed');
 $posts = [];
 $curator_feed_id = devcon_msummit2024_get_theme_mod('curator_feed_id', '');
@@ -73,5 +80,11 @@ if (!empty($curator_feed_id)) {
 				</a>
 			<?php } ?>
 		</div>
+
+        <?php if ($args['feed_button_link'] && $args['feed_button_label']) { ?>
+            <a href="<?php $args['feed_button_link'] ?>" class="block w-3/4 mx-auto text-center bg-[#FFDD00] rounded-lg text-black text-lg uppercase font-bold tracking-wide border-0 py-3 mt-4">
+                <?php echo $args['feed_button_label'] ?>
+            </a>
+        <?php } ?>
 	</div>
 </section>
