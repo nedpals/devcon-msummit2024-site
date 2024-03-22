@@ -67,6 +67,12 @@ $devcon_msummit2024_landing_page_sections = [
 		'name' => 'Sponsors List',
 		'title' => 'Discover the driving force behind the summit!',
 		'description' => ''
+	],
+	[
+		'id' => 'cta',
+		'name' => 'Call to Action',
+		'title' => 'Join the Summit!',
+		'description' => 'Register for the Mindanao DEVCON Summit and secure your spot today!'
 	]
 ];
 
