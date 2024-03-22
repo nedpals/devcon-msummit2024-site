@@ -609,6 +609,22 @@ body {
     background-image: linear-gradient(to right, #F2D72E, #DA621D, #8B27FF, #6EB103);
 }
 
+/*.overview:nth-child(1) .overview-icon {*/
+/*    @apply bg-[#F2D72E];*/
+/*}*/
+
+/*.overview:nth-child(2) .overview-icon {*/
+/*    @apply bg-[#DA621D];*/
+/*}*/
+
+/*.overview:nth-child(3) .overview-icon {*/
+/*    @apply bg-[#8B27FF];*/
+/*}*/
+
+/*.overview:nth-child(4) .overview-icon {*/
+/*    @apply bg-[#6EB103];*/
+/*}*/
+
 .footer-menu ul,
 ul.footer-menu {
     @apply list-none gap-5 flex flex-wrap m-0;

@@ -376,24 +376,24 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 	$overview_activities_setting = devcon_msummit2024_add_setting($wp_customize, 'overview_activities',  [
 		'default' => [
 			[
-				'image' => 'https://via.placeholder.com/285x280',
-				'name' => 'Interactive Workshops',
+				'image' => devcon_msummit2024_get_asset_url('overview-icons/industry_speakers.svg', true),
+				'name' => 'Industry Speakers',
 				'description' => 'Engage in hands-on workshops led by industry experts. Learn new skills and gain practical knowledge in a collaborative environment.'
 			],
 			[
-				'image' => 'https://via.placeholder.com/285x280',
-				'name' => 'Tech Talks',
+				'image' => devcon_msummit2024_get_asset_url('overview-icons/panel_discussions.svg', true),
+				'name' => 'Panel Discussions',
 				'description' => 'Hear from prominent speakers and thought leaders as they share their insights and expertise on the latest trends and innovations in tech.'
 			],
 			[
-				'image' => 'https://via.placeholder.com/285x280',
-				'name' => 'Networking',
-				'description' => 'Connect with fellow tech enthusiasts, industry professionals, and potential employers. Share ideas, collaborate, and build lasting relationships.'
+				'image' => devcon_msummit2024_get_asset_url('overview-icons/exhibitions.svg', true),
+				'name' => 'Exhibitions',
+				'description' => 'Explore career opportunities and connect with potential employers. Get to know the companies and organizations that are looking to hire tech talent.'
 			],
 			[
-				'image' => 'https://via.placeholder.com/285x280',
-				'name' => 'Career Fair',
-				'description' => 'Explore career opportunities and connect with potential employers. Get to know the companies and organizations that are looking to hire tech talent.'
+				'image' => devcon_msummit2024_get_asset_url('overview-icons/networking.svg', true),
+				'name' => 'Networking',
+				'description' => 'Connect with fellow tech enthusiasts, industry professionals, and potential employers. Share ideas, collaborate, and build lasting relationships.'
 			],
 		],
 	]);
