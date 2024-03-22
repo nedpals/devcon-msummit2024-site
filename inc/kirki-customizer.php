@@ -36,7 +36,8 @@ $customTemplateTags = [
 
 function devcon_msummit2024_add_setting(WP_Customize_Manager $wp_customize, string $id, array $args): WP_Customize_Setting {
 	$mod_id = devcon_msummit2024_get_mod_id($id);
-	if ($args && array_key_exists('default', $args)) {
+	// Set default value only if theme mod $mod_id is not set!
+	if (!get_theme_mod($mod_id) && $args && array_key_exists('default', $args)) {
 		set_theme_mod($mod_id, $args['default']);
 	}
 	return $wp_customize->add_setting($mod_id, $args);
