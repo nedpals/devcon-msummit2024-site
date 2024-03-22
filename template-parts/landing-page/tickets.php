@@ -34,6 +34,12 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 
 		<div class="flex flex-wrap items-center -mx-4">
             <?php foreach ($ticketTiers as $tierIdx => $tier) { ?>
+	            <?php $price = Money::of($tier['price'], 'PHP') ?>
+                <?php if ($tier['discount']) { ?>
+                    <?php $discounted = $price->multipliedBy($tier['discount']); ?>
+                    <?php $price = $price->minus($discounted); ?>
+                <?php } ?>
+
 			<div class="w-full flex-none lg:w-auto lg:flex-1 p-4">
 				<div class="rounded-2xl bg-white/10 border border-white/20">
                     <?php $headerClass = implode(' ', [$tier['header_class'], $ticketTiersHeaderClasses[$tierIdx]]); ?>
@@ -41,35 +47,14 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 					<div class="flex items-center justify-center space-x-2 rounded-t-xl uppercase font-extrabold py-2 <?php echo $headerClass; ?> bg-opacity-50">
 						<p class="text-xl tracking-wide"><?php echo $tier['label'] ?></p>
 
-                        <?php if (isset($tier['discount'])) { ?>
+                        <?php if ($tier['discount']) { ?>
                             <span class="block text-lg tracking-wide rounded-full border border-white px-6 py-0.5">
                                 <?php echo $tier['discount'] * 100 ?>% off
                             </span>
                         <?php } ?>
 					</div>
 
-					<div class="px-4 pb-4">
-						<div class="py-6 flex justify-center items-center space-x-4 font-bold">
-							<?php $price = Money::of($tier['price'], 'PHP') ?>
-
-							<?php if (isset($tier['discount'])) { ?>
-                                <?php $discounted = $price->multipliedBy($tier['discount']); ?>
-                                <?php $discountedPrice = $price->minus($discounted); ?>
-
-                                <p class="text-2xl text-white/60 line-through">
-									<?php echo $price->formatWith($numFmt) ?>
-                                </p>
-
-                                <p class="text-5xl">
-                                    <?php echo $discountedPrice->formatWith($numFmt) ?>
-                                </p>
-                            <?php } else { ?>
-                                <p class="text-5xl">
-									<?php echo $price->formatWith($numFmt) ?>
-                                </p>
-                            <?php } ?>
-						</div>
-
+					<div class="p-6">
 						<div class="space-y-4">
 							<p class="font-bold">What you'll get:</p>
 
@@ -89,8 +74,8 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 							</div>
 						</div>
 
-						<a href="<?php echo $tier['link'] ?>" target="_blank" class="block w-full text-center bg-[#FFDD00] rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-sm mt-12">
-                            Order Now
+                        <a href="<?php echo $tier['link'] ?>" target="_blank" class="block w-full text-center bg-[#FFDD00] rounded-lg text-black uppercase font-bold tracking-wide border-0 py-3 text-lg mt-12">
+                            Get It - <?php echo $price->formatWith($numFmt) ?>
                         </a>
 					</div>
 				</div>
