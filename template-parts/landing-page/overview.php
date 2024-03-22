@@ -1,5 +1,5 @@
 <?php
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Overview');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('overview');
 $activities = devcon_msummit2024_get_theme_mod('overview_activities', []);
 ?>
 

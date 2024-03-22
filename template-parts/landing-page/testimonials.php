@@ -3,7 +3,7 @@
 	     class="absolute top-0 inset-x-0 bg-no-repeat bg-cover bg-left h-full w-full"></div>
 
 	<div class="relative max-w-3xl mx-auto w-full px-2">
-		<?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Testimonials'); ?>
+		<?php [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('testimonials'); ?>
 
 		<div class="section-heading pb-8">
 			<h2><?php echo $sectionTitle ?></h2>

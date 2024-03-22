@@ -1,4 +1,4 @@
-<?php [$sectionTitle] = devcon_msummit2024_render_section('FAQs'); ?>
+<?php [$sectionTitle] = devcon_msummit2024_render_section('faqs'); ?>
 
 <section class="py-24">
 	<div class="container">

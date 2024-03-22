@@ -5,7 +5,7 @@ use Brick\Money\Money;
 $numFmt = new NumberFormatter('en_US', NumberFormatter::CURRENCY);
 $numFmt->setAttribute(\NumberFormatter::MIN_FRACTION_DIGITS, 0);
 
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Tickets');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('tickets');
 
 $ticketTiersHeaderClasses = [
     'bg-gradient-to-r from-[rgba(168,229,78,0.5)] to-transparent',

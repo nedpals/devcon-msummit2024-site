@@ -1,6 +1,6 @@
 <?php
 
-[$sectionTitle] = devcon_msummit2024_render_section('Sponsors List');
+[$sectionTitle] = devcon_msummit2024_render_section('sponsors');
 $sponsors = devcon_msummit2024_get_theme_mod('sponsors', []);
 
 function categorize_sponsors($sponsors): array {

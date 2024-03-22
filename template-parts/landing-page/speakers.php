@@ -1,5 +1,5 @@
 <?php
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Featured Speakers');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('speakers');
 $speakers = devcon_msummit2024_get_theme_mod('speakers', []);
 ?>
 <section class="py-24 relative">

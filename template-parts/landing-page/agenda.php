@@ -1,5 +1,5 @@
 <?php
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Program Agenda');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('agenda');
 ?>
 
 <section class="py-24">

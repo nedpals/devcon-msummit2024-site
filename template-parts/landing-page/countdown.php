@@ -1,5 +1,5 @@
 <?php
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Countdown');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('countdown');
 
 $countdown_labels = [
     'days' => 'Days',

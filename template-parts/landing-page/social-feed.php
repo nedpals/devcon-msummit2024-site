@@ -1,5 +1,5 @@
 <?php
-[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('Social Media Feed');
+[$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('social_feed');
 $posts = [];
 $curator_feed_id = devcon_msummit2024_get_theme_mod('curator_feed_id', '');
 
