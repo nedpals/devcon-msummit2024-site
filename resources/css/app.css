@@ -605,6 +605,12 @@ body {
     background-image: linear-gradient(to right, #F2D72E, #DA621D, #8B27FF, #6EB103);
 }
 
-footer .menu-item a {
-    @apply text-gray-300 hover:text-gray-400 hover:underline;
+.footer-menu ul,
+ul.footer-menu {
+    @apply list-none gap-5 flex flex-wrap m-0;
+}
+
+.footer-menu .page_item a,
+.footer-menu .menu-item a {
+    @apply text-gray-300 hover:text-white hover:underline;
 }
