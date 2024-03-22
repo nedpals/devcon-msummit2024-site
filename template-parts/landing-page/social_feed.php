@@ -3,7 +3,7 @@
 
 $args = wp_parse_args($args, [
     'feed_button_link' => devcon_msummit2024_get_theme_mod('feed_button_link', '#'),
-    'feed_button_label' => devcon_msummit2024_get_theme_mod('feed_button_label', 'View More')
+    'feed_button_label' => devcon_msummit2024_get_theme_mod('feed_button_text', 'View More')
 ]);
 
 [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('social_feed');
@@ -55,7 +55,7 @@ if (!empty($curator_feed_id)) {
 	</div>
 
 	<!-- tweets in pinterest layout -->
-	<div class="relative max-w-7xl mx-auto w-full px-2">
+	<div class="relative max-w-7xl mx-auto w-full px-2 flex flex-col">
 		<div class="flex flex-row justify-center gap-6">
 			<?php foreach ($posts as $post) { ?>
 				<a href="<?php echo $post['url'] ?>" class="w-1/3 group hover:shadow-lg hover:scale-105 transition-all block break-inside-avoid bg-white text-gray-900 shadow rounded-xl p-6 space-y-4">
@@ -82,7 +82,7 @@ if (!empty($curator_feed_id)) {
 		</div>
 
         <?php if ($args['feed_button_link'] && $args['feed_button_label']) { ?>
-            <a href="<?php $args['feed_button_link'] ?>" class="block w-3/4 mx-auto text-center bg-[#FFDD00] rounded-lg text-black text-lg uppercase font-bold tracking-wide border-0 py-3 mt-4">
+            <a href="<?php $args['feed_button_link'] ?>" class="self-center mt-12 block w-auto text-center bg-[#FFDD00] rounded-lg text-black text-lg uppercase font-bold tracking-wide border-0 py-3 px-9">
                 <?php echo $args['feed_button_label'] ?>
             </a>
         <?php } ?>
