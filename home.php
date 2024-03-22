@@ -9,7 +9,7 @@
 get_header();
 
 $page_sections = [
-   'upper' => ['hero', 'overview'],
+   'upper' => ['overview'],
    'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsorship_packages', 'faqs', 'countdown', 'social-feed', 'sponsors']
 ];
 
@@ -31,6 +31,14 @@ function load_section(string $name): void {
 ?>
 
 <div class="devcon-default-bg -mt-16">
+    <?php get_template_part('template-parts/landing-page/hero', args: [
+	    'event_location' => devcon_msummit2024_render_text('event_location', return: true),
+	    'event_date' => devcon_msummit2024_render_text('event_date', return: true),
+	    'event_time' => devcon_msummit2024_render_text('event_time', return: true),
+        'alternating_texts' => devcon_msummit2024_get_theme_mod('hero_alternating_texts', ''),
+	    'cta_button_text' => devcon_msummit2024_render_text('cta_button_text', return: true),
+	    'cta_button_url' => devcon_msummit2024_get_theme_mod('cta_button_url', ''),
+    ]); ?>
 	<?php load_section('upper'); ?>
 </div>
 

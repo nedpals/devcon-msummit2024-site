@@ -7,9 +7,12 @@ declare const window: {
 const texts = window.alternatingTexts ?? [];
 
 jQuery(function() {
-    let typer = new TypeIt("#alternating-text", {
-        loop: true,
-    });
+    const container = document.getElementById("alternating-text");
+    if (!container) {
+        return;
+    }
+
+    let typer = new TypeIt(container, { loop: true });
 
     for (let i = 0; i < texts.length; i++) {
         if (i > 0) {
