@@ -350,57 +350,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 		'priority' => 20,
 	]);
 
-	$section_divider_setting = devcon_msummit2024_add_setting($wp_customize, 'section_divider', [
-		'default' => true,
-	]);
-
-	foreach ($devcon_msummit2024_page_sections as $section) {
-		$sectionId = devcon_msummit2024_get_mod_id( 'section_' . $section['id']);
-
-		// Add setting for showing specific section
-		$section_show_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_enabled', [
-			'default' => true,
-		]);
-
-		(new Kirki\Pro\Field\HeadlineToggle([
-			'section' => $sections_section->id,
-			'settings' => $section_show_setting->id,
-			'label' => $section['name'],
-			'default' => $section_show_setting->default,
-		]))->add_control($wp_customize);
-
-
-		$section_title_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_title', [
-			'default' => $section['title'],
-//			'transport' => 'refresh',
-		]);
-
-		(new Kirki\Field\Text([
-			'section' => $sections_section->id,
-			'settings' => $section_title_setting->id,
-			'label' => '"'. $section['name'] .'" Title',
-			'default' => $section_title_setting->default,
-		]))->add_control($wp_customize);
-
-		$section_description_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_description', [
-			'default' => $section['description'] ?? "",
-//			'transport' => 'refresh',
-		]);
-
-		(new Kirki\Field\Textarea([
-			'section' => $sections_section->id,
-			'settings' => $section_description_setting->id,
-			'label' => '"'. $section['name'] .'" Description',
-			'default' => $section_description_setting->default,
-		]))->add_control($wp_customize);
-
-		(new Kirki\Pro\Field\Divider(
-			[
-				'settings' => $section_divider_setting->id,
-				'section'  => $sections_section->id,
-			]
-		))->add_control($wp_customize);
-	}
+	devcon_msummit2024_generate_per_section_settings($wp_customize, $sections_section, $devcon_msummit2024_landing_page_sections);
 
 	// === Overview ===
 	$overview_section = $wp_customize->add_section('devcon-msummit2024_overview_section', [
@@ -1017,6 +967,60 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			]
 		],
 	]));
+}
+
+function devcon_msummit2024_generate_per_section_settings(WP_Customize_Manager $wp_customize, WP_Customize_Section $sections_section, array $page_sections, string $section_prefix = 'section_') {
+	$section_divider_setting = devcon_msummit2024_add_setting($wp_customize,  $section_prefix .'divider', [
+		'default' => true,
+	]);
+
+	foreach ($page_sections as $section) {
+		$sectionId = devcon_msummit2024_get_mod_id( $section_prefix . $section['id']);
+
+		// Add setting for showing specific section
+		$section_show_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_enabled', [
+			'default' => true,
+		]);
+
+		(new Kirki\Pro\Field\HeadlineToggle([
+			'section' => $sections_section->id,
+			'settings' => $section_show_setting->id,
+			'label' => $section['name'],
+			'default' => $section_show_setting->default,
+		]))->add_control($wp_customize);
+
+
+		$section_title_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_title', [
+			'default' => $section['title'],
+//			'transport' => 'refresh',
+		]);
+
+		(new Kirki\Field\Text([
+			'section' => $sections_section->id,
+			'settings' => $section_title_setting->id,
+			'label' => '"'. $section['name'] .'" Title',
+			'default' => $section_title_setting->default,
+		]))->add_control($wp_customize);
+
+		$section_description_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_description', [
+			'default' => $section['description'] ?? "",
+//			'transport' => 'refresh',
+		]);
+
+		(new Kirki\Field\Textarea([
+			'section' => $sections_section->id,
+			'settings' => $section_description_setting->id,
+			'label' => '"'. $section['name'] .'" Description',
+			'default' => $section_description_setting->default,
+		]))->add_control($wp_customize);
+
+		(new Kirki\Pro\Field\Divider(
+			[
+				'settings' => $section_divider_setting->id,
+				'section'  => $sections_section->id,
+			]
+		))->add_control($wp_customize);
+	}
 }
 
 add_action('customize_register', 'devcon_msummit2024_customize_register');
