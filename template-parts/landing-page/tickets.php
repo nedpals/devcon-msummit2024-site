@@ -17,7 +17,7 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 
 ?>
 
-<section class="relative py-24">
+<section id="tickets" class="relative py-24">
 	<!-- Show full version of background image for larger screens -->
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('tickets_bg.png') ?>)"
 	     class="hidden 2xl:block absolute top-0 inset-x-0 bg-no-repeat bg-contain bg-right-bottom h-full w-full"></div>

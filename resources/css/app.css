@@ -646,6 +646,10 @@ ul.footer-menu {
         @apply bg-[hsl(52deg,100%,50%)] text-[#18073F];
     }
 
+    .btn.btn-primary.is-outline {
+        @apply bg-transparent border border-[#FFDD00] text-[#FFDD00];
+    }
+
     .btn.btn-primary:hover {
         @apply bg-[hsl(52deg,100%,45%)] text-[#18073F];
     }
