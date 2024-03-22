@@ -67,9 +67,15 @@ $sponsors_by_tier = categorize_sponsors($sponsors);
 
             <div class="-mt-6 bg-[#110125] px-8 lg:px-20 py-12 flex flex-wrap items-center justify-center rounded-2xl">
                 <?php foreach ($sponsors_by_tier['sponsors'][$label] as $sponsor) { ?>
-					<a href="<?php echo $sponsor['url'] ?>" target="_blank" class="w-1/3 lg:w-1/4 p-6 flex justify-center items-center">
-						<img src="<?php echo $sponsor['logo'] ?>" alt="<?php echo $sponsor['name'] ?>" class="w-auto h-auto" />
-					</a>
+                    <?php if (empty($sponsor['url']) || $sponsor['url'] == '#') { ?>
+                        <div class="w-1/3 lg:w-1/4 p-6 flex justify-center items-center">
+                            <img src="<?php echo $sponsor['logo'] ?>" alt="<?php echo $sponsor['name'] ?>" class="w-auto h-auto" />
+                        </div>
+                    <?php } else { ?>
+                        <a href="<?php echo $sponsor['url'] ?>" target="_blank" class="w-1/3 lg:w-1/4 p-6 flex justify-center items-center">
+                            <img src="<?php echo $sponsor['logo'] ?>" alt="<?php echo $sponsor['name'] ?>" class="w-auto h-auto" />
+                        </a>
+                    <?php } ?>
 				<?php } ?>
 			</div>
 		</div>
