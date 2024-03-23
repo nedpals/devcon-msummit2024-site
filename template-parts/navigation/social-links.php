@@ -14,7 +14,7 @@ $social_media_ids_to_icons = [
 ];
 ?>
 
-<div class="flex space-x-3 items-center <?php echo $args['class'] ?>">
+<div class="flex space-x-3 items-center <?php echo ($args && $args['class'] ? $args['class'] : null) ?>">
 	<?php foreach ($social_media_ids_to_icons as $name => $svg) { ?>
 		<?php $link = devcon_msummit2024_get_theme_mod($name.'_link', '') ?>
 
