@@ -51,17 +51,19 @@ function render_cta(string $text = '') {
 
 [$featured_sponsors, $remainder_sponsors_length] = get_featured_sponsors($sponsors, $packageTitles);
 [$sectionTitle, $sectionDescription] = devcon_msummit2024_render_section('sponsors-cta');
+$is_full_state = count($featured_sponsors) >= 2;
+$is_empty_state = !$is_full_state;
 ?>
 
 <div class="relative py-24 devcon-bg-2">
     <div style="background-image: url(<?php devcon_msummit2024_get_asset_url('circle_bg.png') ?>)"
          class="absolute top-0 inset-x-0 bg-no-repeat bg-cover bg-center h-full w-full"></div>
 
-	<div class="relative <?php echo !empty($featured_sponsors) ? 'container' : 'max-w-4xl mx-auto w-full' ?>">
+	<div class="relative <?php echo $is_full_state ? 'container' : 'max-w-4xl mx-auto w-full' ?>">
         <div class="flex flex-col lg:flex-row lg:items-stretch">
-            <div class="text-center w-full <?php if (!empty($featured_sponsors)) { ?>lg:text-left lg:w-1/2<?php } ?> space-y-8 pb-12 lg:pb-0 lg:pr-12 flex flex-col justify-center">
+            <div class="text-center w-full <?php if ($is_full_state) { ?>lg:text-left lg:w-1/2<?php } ?> space-y-8 pb-12 lg:pb-0 lg:pr-12 flex flex-col justify-center">
                 <!-- Load icons of sponsorship tiers instead -->
-	            <?php if (empty($featured_sponsors)) { ?>
+	            <?php if ($is_empty_state) { ?>
                     <div class="flex items center justify-center gap-6">
                         <div class="flex-1 flex items-center justify-center flex-wrap gap-6">
                             <?php foreach ($packages as $package) { ?>
@@ -76,15 +78,15 @@ function render_cta(string $text = '') {
                     </div>
                 <?php } ?>
 
-                <h2 class="uppercase <?php echo !empty($featured_sponsors) ? 'text-4xl' : 'text-5xl' ?> font-extrabold tracking-wide w-full"><?php echo $sectionTitle ?></h2>
-                <p class="font-light <?php echo !empty($featured_sponsors) ? '' : 'text-xl' ?>"><?php echo $sectionDescription ?></p>
+                <h2 class="uppercase <?php echo $is_full_state ? 'text-4xl' : 'text-5xl' ?> font-extrabold tracking-wide w-full"><?php echo $sectionTitle ?></h2>
+                <p class="font-light <?php echo $is_full_state ? '' : 'text-xl' ?>"><?php echo $sectionDescription ?></p>
 
-	            <?php if (empty($featured_sponsors)) { ?>
+	            <?php if ($is_empty_state) { ?>
                     <?php render_cta() ?>
                 <?php } ?>
             </div>
 
-	        <?php if (!empty($featured_sponsors)) { ?>
+	        <?php if ($is_full_state) { ?>
             <div class="w-full lg:w-1/2 pt-12 lg:pt-0 lg:pl-12 space-y-8 text-center border-t lg:border-t-0 lg:border-l border-white/20">
                 <h3 class="text-center text-lg font-semibold">Featured sponsors</h3>
 
