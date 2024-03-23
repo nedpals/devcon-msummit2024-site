@@ -41,7 +41,7 @@ $args = wp_parse_args($args, [
 				    <p class="font-light text-lg"><?php echo $args['content'] ?></p>
                 <?php } ?>
 
-				<div class="flex flex-col items-start lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4 text-sm">
+				<div class="flex flex-col items-start xl:flex-row space-y-4 xl:space-y-0 xl:space-x-4 text-sm">
 					<?php if (!empty($args['event_location'])) { ?>
                         <div class="flex space-x-2 border border-white/20 bg-white/10 backdrop-blur-md rounded-lg uppercase tracking-widest px-4 py-3">
                             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -67,11 +67,13 @@ $args = wp_parse_args($args, [
                                 </defs>
                             </svg>
 
-                            <p><?php echo $args['event_date'] ?></p>
+                            <p>
+                                <span><?php echo $args['event_date'] ?></span>
 
-                            <?php if (!empty($args['event_time'])) { ?>
-                                <p><?php echo $args['event_time'] ?></p>
-                            <?php } ?>
+                                <?php if (!empty($args['event_time'])) { ?>
+                                    <span><?php echo $args['event_time'] ?></span>
+                                <?php } ?>
+                            </p>
                         </div>
                     <?php } ?>
 				</div>
