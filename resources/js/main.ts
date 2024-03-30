@@ -7,3 +7,4 @@ import './modules/marquee';
 import './modules/accordion';
 import './modules/countdown';
 import './modules/slider';
+import './modules/header';
