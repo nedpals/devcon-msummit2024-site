@@ -55,7 +55,7 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 					</div>
 
 					<div class="p-6">
-						<div class="space-y-4">
+						<div class="space-y-2">
 							<p class="font-bold">What you'll get:</p>
 
 							<div class="rounded-t-lg rounded-b-lg flex flex-col border border-white/20 divide-y divide-white/20">
@@ -74,8 +74,9 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 							</div>
 						</div>
 
-                        <a href="<?php echo $tier['link'] ?>" target="_blank" class="btn btn-primary block w-full text-center text-lg mt-12">
-                            Get It - <?php echo $price->formatWith($numFmt) ?>
+                        <a href="<?php echo $tier['link'] ?>" target="_blank" class="btn btn-primary flex flex-col space-y-0.5 w-full text-center mt-4">
+                            <span class="font-normal">Get It</span>
+                            <span class="text-3xl"><?php echo $price->formatWith($numFmt) ?></span>
                         </a>
 					</div>
 				</div>
