@@ -15,7 +15,7 @@
 get_header();
 ?>
 
-<main id="primary" class="relative devcon-default-bg site-main -mt-16 pt-24">
+<main id="primary" class="relative site-main -mt-16 pt-24">
 	<div
         style="background-image: url(<?php devcon_msummit2024_get_asset_url('bg-blog.png') ?>)"
         class="absolute inset-x-0 top-0 w-full bg-no-repeat bg-top bg-cover h-full"></div>

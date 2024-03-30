@@ -26,7 +26,7 @@ $page_sections = [
 	<?php devcon_msummit2024_load_page_sections($page_sections,'upper', 'landing-page'); ?>
 </div>
 
-<div class="devcon-default-bg">
+<div>
 	<?php devcon_msummit2024_load_page_sections($page_sections,'lower', 'landing-page'); ?>
 </div>
 <?php get_footer(); ?>
