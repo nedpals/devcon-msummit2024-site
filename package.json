@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@kucrut/vite-for-wp": "^0.8.0",
+    "@tailwindcss/typography": "^0.5.12",
     "@wordpress/scripts": "^19.2.2",
     "autoprefixer": "^10.4.16",
     "postcss": "^8.4.31",

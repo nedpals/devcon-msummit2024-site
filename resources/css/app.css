@@ -583,7 +583,8 @@ body {
     @apply w-3/4;
 }
 
-.section-heading:after {
+.section-heading:after,
+.entry-header:after {
     content: "";
     @apply block max-w-[24rem] lg:max-w-3xl w-full h-2 mt-10 bg-gradient-to-r from-[rgba(255,221,0,1)] via-[rgba(113,180,6,0.7813)] to-transparent;
 }

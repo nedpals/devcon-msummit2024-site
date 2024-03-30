@@ -14,11 +14,41 @@ export default {
     extend: {
       fontFamily: {
         'sans': ['"Sora"', ...defaultTheme.fontFamily.sans]
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.white'),
+            a: {
+              color: theme('colors.blue.400'),
+              '&:hover': {
+                color: theme('colors.blue.600'),
+              },
+            },
+            h1: {
+                color: theme('colors.white'),
+            },
+            h2: {
+                color: theme('colors.white'),
+            },
+            h3: {
+                color: theme('colors.white'),
+            },
+            h4: {
+                color: theme('colors.white'),
+            },
+            strong: {
+                color: theme('colors.white'),
+            }
+          }
+        }
+      })
     },
   },
   corePlugins: {
     container: false
   },
-  plugins: [],
+  plugins: [
+      require('@tailwindcss/typography'),
+  ],
 }
