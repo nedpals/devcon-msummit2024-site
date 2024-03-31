@@ -127,28 +127,28 @@ table {
 
 /* Links
 --------------------------------------------- */
-a {
-    color: #4169e1;
-}
+/*a {*/
+/*    color: #4169e1;*/
+/*}*/
 
-a:visited {
-    color: #800080;
-}
+/*a:visited {*/
+/*    color: #800080;*/
+/*}*/
 
-a:hover,
-a:focus,
-a:active {
-    color: #191970;
-}
+/*a:hover,*/
+/*a:focus,*/
+/*a:active {*/
+/*    color: #191970;*/
+/*}*/
 
-a:focus {
-    outline: thin dotted;
-}
+/*a:focus {*/
+/*    outline: thin dotted;*/
+/*}*/
 
-a:hover,
-a:active {
-    outline: 0;
-}
+/*a:hover,*/
+/*a:active {*/
+/*    outline: 0;*/
+/*}*/
 
 /* Forms
 --------------------------------------------- */
@@ -668,6 +668,6 @@ ul.footer-menu {
     }
 
     .btn.btn-white:hover {
-        @apply bg-gray-50 text-black;
+        @apply bg-gray-200;
     }
 }
