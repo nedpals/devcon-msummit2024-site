@@ -671,3 +671,11 @@ ul.footer-menu {
         @apply bg-gray-200;
     }
 }
+
+.single.single-post .cat-links {
+    @apply space-x-2 pb-6;
+}
+
+.single.single-post .cat-links a {
+    @apply border border-white/40 hover:border-white/30 bg-white/20 hover:bg-white/10 transition-colors px-4 py-2 font-semibold rounded-lg;
+}
