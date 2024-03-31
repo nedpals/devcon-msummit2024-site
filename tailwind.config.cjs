@@ -20,9 +20,9 @@ export default {
           css: {
             color: theme('colors.white'),
             a: {
-              color: theme('colors.blue.400'),
+              color: 'rgb(113, 180, 6)',
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: 'rgb(113, 180, 6)',
               },
             },
             h1: {
@@ -39,8 +39,49 @@ export default {
             },
             strong: {
                 color: theme('colors.white'),
+            },
+            blockquote: {
+                color: theme('colors.white'),
+                paddingInlineStart: 0,
+                borderRadius: theme('borderRadius.lg'),
+                margin: 0,
+                padding: theme('spacing.3') + ' ' + theme('spacing.6'),
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: 0,
+                position: 'relative',
+                fontStyle: 'normal',
+                '&:before': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    padding: '2px',
+                    borderRadius: theme('borderRadius.lg'),
+                    background: 'linear-gradient(to bottom, rgb(255,221,0), rgba(113, 180, 6, 0.78) 22.5%, rgba(113, 180, 6, 0))',
+                    mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    maskComposite: 'exclude',
+                    '-webkit-mask': 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    '-webkit-mask-composite': 'xor',
+                },
+                '&:after': {
+                    content: '""',
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '2% 0%',
+                    backgroundImage: 'url(../assets/gridicons_quote.png)',
+                },
             }
           }
+        },
+        lg: {
+            css: {
+                blockquote: {
+                    paddingInlineStart: 0,
+                    padding: theme('spacing.6') + ' ' + theme('spacing.12'),
+                }
+            }
         }
       })
     },
