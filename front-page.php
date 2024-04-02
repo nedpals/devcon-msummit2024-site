@@ -10,7 +10,7 @@ get_header();
 
 $page_sections = [
    'upper' => ['overview', 'preevents'],
-   'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsors-cta', 'faqs', 'countdown', 'social_feed', 'sponsors', 'common/cta']
+   'lower' => ['agenda', 'speakers', 'tickets', 'testimonials', 'sponsors-cta', 'faqs', 'countdown', 'social_feed', 'common/sponsors', 'common/cta']
 ];
 ?>
 

@@ -40,7 +40,7 @@ if ( ! function_exists( 'devcon_msummit2024_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.
 	 */
-	function devcon_msummit2024_posted_by($class_name = '', bool $link = true, WP_Post|null $post = null) {
+	function devcon_msummit2024_posted_by($class_name = '', bool $link = true, WP_Post|null $post = null, $avatar = false) {
 		$author_meta = esc_html(get_the_author_meta( 'display_name', $post ? $post->post_author : get_the_author_meta( 'ID' ) ));
         $pby_string = $link ? '<a class="url fn n" href="' . esc_url( get_author_posts_url($post ? $post->post_author : get_the_author_meta( 'ID' ) ) ) . '">' . $author_meta . '</a>' : $author_meta;
 
@@ -50,8 +50,13 @@ if ( ! function_exists( 'devcon_msummit2024_posted_by' ) ) :
 			'<span class="author vcard">'.$pby_string.'</span>'
 		);
 
-		echo '<span class="byline '.$class_name.'"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$text = '<span class="byline '.$class_name.'"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
+        if ($avatar) {
+	        $text = '<div class="inline-flex items-center space-x-2">' . get_avatar( $post ? $post->post_author : get_the_author_meta( 'ID' ), 32, '', '', [ 'class' => 'rounded-full' ] ) . $text . '</div>';
+        }
+
+		echo $text;
 	}
 endif;
 

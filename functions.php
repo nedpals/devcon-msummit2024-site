@@ -176,6 +176,12 @@ function devcon_msummit2024_load_fonts() {
 }
 add_action('wp_head', 'devcon_msummit2024_load_fonts', 10);
 
+function devcon_msummit2024_excerpt_length( $length ) {
+	return 45;
+}
+
+add_filter( 'excerpt_length', 'devcon_msummit2024_excerpt_length', 999 );
+
 /**
  * Disable WP admin bar
  */

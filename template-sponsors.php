@@ -4,7 +4,7 @@
 get_header();
 
 $page_sections = [
-    'lower' => ['landing-page/testimonials', 'landing-page/faqs', 'landing-page/countdown', 'landing-page/sponsors', 'landing-page/social_feed']
+    'lower' => ['landing-page/testimonials', 'landing-page/faqs', 'landing-page/countdown', 'common/sponsors', 'landing-page/social_feed']
 ];
 ?>
 

@@ -25,7 +25,10 @@ get_header();
 
         <?php if (have_posts() && $paged == 1) : the_post(); ?>
         <div class="w-full pb-8">
-	        <?php get_template_part('template-parts/blog/article-card', 'horizontal', args: ['post' => $post]); ?>
+	        <?php get_template_part('template-parts/blog/article-card', 'horizontal', args: [
+                'post' => $post,
+                'class' => 'md:h-[30rem]'
+            ]); ?>
         </div>
         <?php endif ?>
 
@@ -37,7 +40,7 @@ get_header();
 					?>
 
 					<div class="w-full md:w-1/2 lg:w-1/3 p-4">
-						<?php get_template_part('template-parts/blog/article-card', args: ['post' => $post]); ?>
+						<?php get_template_part('template-parts/blog/article-card', args: ['post' => $post, 'excerpt' => true]); ?>
 					</div>
 
 					<?php
@@ -60,6 +63,10 @@ get_header();
 </div>
 
 <?php
+$sections = ['common/sponsors', 'landing-page/social_feed', 'common/cta'];
 
-get_template_part('template-parts/common/cta');
+foreach ($sections as $section) {
+    get_template_part('template-parts/' . $section);
+}
+
 get_footer();
