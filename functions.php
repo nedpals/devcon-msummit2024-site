@@ -144,7 +144,7 @@ function devcon_msummit2024_scripts() {
 
     \Kucrut\Vite\enqueue_asset(
         __DIR__ . '/resources/dist',
-        '/resources/js/main.ts',
+        'resources/js/main.ts',
         array(
             'handle' => '_devcon_main_app',
         )
