@@ -1,0 +1,50 @@
+# CWordPress theme packager workflow
+name: Package WordPress Theme
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+    package:
+        runs-on: ubuntu-latest
+        steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+
+        - name: Set up PHP
+          uses: shivammathur/setup-php@v2
+          with:
+            php-version: '8.2'
+
+        - name: Set up Python
+          uses: actions/setup-python@v2
+          with:
+            python-version: '3.x'
+
+        - name: Install dependencies
+          run: composer install
+
+        - name: Build theme
+          run: npm install && npm run build
+
+        - name: Run package.py
+          run: python package.py
+
+        - name: Create release
+          id: create_release
+          uses: softprops/action-gh-release@v1
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          with:
+            files: theme.zip
+            tag_name: release-${{ github.sha }}
+            release_name: Release ${{ github.sha }}
+            body: |
+                Release ${{ github.sha }}
+            draft: false
+            prerelease: false
+
+        - name: Get the URL of the created release
+          run: echo "The release is at ${{ steps.create_release.outputs.html_url }}"

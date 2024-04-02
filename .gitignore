@@ -605,3 +605,5 @@ dist
 .pnp.*
 
 resources/dist
+
+theme.zip
