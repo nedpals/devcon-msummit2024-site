@@ -11,7 +11,7 @@ $thumbnail_url = get_the_post_thumbnail_url();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('min-h-screen'); ?>>
-    <header class="max-w-6xl w-full mx-auto px-6 py-10 lg:py-20">
+    <header class="container w-full mx-auto px-6 py-10 lg:py-20">
         <?php
         /* translators: used between list items, there is a space after the comma */
         $categories_list = get_the_category_list( esc_html__( ' ', 'devcon-msummit2024' ) );
