@@ -24,10 +24,10 @@ jobs:
             python-version: '3.x'
 
         - name: Install dependencies
-          run: composer install
+          run: composer install --no-dev
 
         - name: Build theme
-          run: npm install && npm run build
+          run: npm ci && npm run build
 
         - name: Run package.py
           run: python package.py
