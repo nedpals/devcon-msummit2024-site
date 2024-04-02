@@ -63,10 +63,13 @@ get_header();
 </div>
 
 <?php
-$sections = ['common/sponsors', 'landing-page/social_feed', 'common/cta'];
 
-foreach ($sections as $section) {
-    get_template_part('template-parts/' . $section);
+if ($paged == 1) {
+	$sections = [ 'common/sponsors', 'landing-page/social_feed', 'common/cta' ];
+
+	foreach ( $sections as $section ) {
+		get_template_part( 'template-parts/' . $section );
+	}
 }
 
 get_footer();
