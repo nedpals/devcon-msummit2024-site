@@ -16,6 +16,7 @@ $post = $args['post'];
 	<div class="relative">
 		<?php $category = get_the_category($post->ID) ?>
 		<?php $thumbnail_url = get_the_post_thumbnail_url() ?>
+		<?php $thumbnail_url = $thumbnail_url ?: devcon_msummit2024_get_asset_url('blog_placeholder.jpg', return: true); ?>
 
 		<div class="pb-[calc(9/16*100%)] bg-black rounded-t-xl bg-center bg-cover bg-no-repeat"
 		     style="background-image: url(<?php echo $thumbnail_url ?>)">
