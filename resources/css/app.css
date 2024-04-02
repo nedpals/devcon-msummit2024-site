@@ -572,7 +572,7 @@ body {
 }
 
 .section-heading h2 {
-    @apply uppercase text-5xl lg:text-6xl font-extrabold mb-4 lg:mb-12;
+    @apply uppercase text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 lg:mb-12;
 }
 
 .section-heading h2 img {
