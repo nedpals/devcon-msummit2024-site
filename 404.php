@@ -7,54 +7,57 @@
  * @package devcon-msummit2024
  */
 
-get_header();
+get_template_part('template-parts/head', args: [
+    'custom_html' => '<style>
+          .secret-text {
+            transform: translateY(100%);
+            animation: scroll 20s infinite linear;
+          }
+          
+          .secret-text:hover {
+            animation-play-state: paused;
+          }
+          
+          @keyframes scroll {
+            0% {
+              transform: translateY(100%);
+            }
+            100% {
+              transform: translateY(-100%);
+            }
+          }
+     </style>'
+]);
 ?>
+<style></style>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="relative devcon-default-bg site-main h-screen overflow-hidden">
+		<div class="absolute top-0 inset-0 flex flex-col items-center justify-center opacity-30 h-full">
+           <img src="<?php devcon_msummit2024_get_asset_url('summit_logo.png') ?>" alt="Summit Logo" />
+           <h1 class="text-[13rem] md:text-[20rem] font-extrabold text-center">404</h1>
+		</div>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'devcon-msummit2024' ); ?></h1>
-			</header><!-- .page-header -->
-
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'devcon-msummit2024' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'devcon-msummit2024' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$devcon_msummit2024_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'devcon-msummit2024' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$devcon_msummit2024_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
-
-	</main><!-- #main -->
+        <div class="secret-text relative max-w-5xl tracking-tight mx-auto space-y-16 text-4xl md:text-5xl px-4">
+            <div class="space-y-4">
+                <p>Pag-abot nimo dinhi, nawala ang dalan,</p>
+                <p>Giunsa pa kaha, ang page nga imong gipangita wala na man?</p>
+                <p>Ay, amigo, naglibog ka ba? Apan ayaw kaguol,</p>
+                <p>Ang imong gipangita, sama sa hangin, nahimong gabok!</p>
+            </div>
+            <div class="space-y-4">
+                <p>Ayaw na pagdugay, ug balik sa pagsugod,</p>
+                <p>Kay ang imong giagian, nahimo nang kagabhion.</p>
+                <p>Ang 404 nga imong giatubang, sadya lang ni, dili panghadlok,</p>
+                <p>Magbinayloay ta&#39;g katawa, kay ang kalibutan puno sa kalokohan!</p>
+            </div>
+            <div class="space-y-4">
+                <p>Ay, higala, kung nangita ka&#39;g kahibalo ug kalipay,</p>
+                <p>Padayon, ayaw paglangay, <a class="hover:bg-[rgb(113,180,6)]" href="<?php echo home_url(); ?>">sa dagan balik sa atong sinugdanan</a>.</p>
+                <p>Latas sa dagat sa panahon, sumayaw uban sa mga balod,</p>
+                <p>Imong kasingkasing magdala, ug <a class="hover:bg-[rgb(113,180,6)]" href="<?php echo devcon_msummit2024_get_theme_mod('cta_button_url', '#') ?>">sa paglakaw mo, dapit nga imong gipangandoy mahanap mo</a>.</p>
+            </div>
+        </div>
+	</main>
 
 <?php
-get_footer();
+get_template_part('template-parts/foot');
