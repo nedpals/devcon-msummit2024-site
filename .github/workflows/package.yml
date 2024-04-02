@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout code
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
 
         - name: Set up PHP
           uses: shivammathur/setup-php@v2
@@ -34,15 +34,11 @@ jobs:
 
         - name: Create release
           id: create_release
-          uses: softprops/action-gh-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          uses: softprops/action-gh-release@v2
           with:
             name: Release ${{ github.sha }}
             files: theme.zip
             tag_name: release-${{ github.sha }}
-            body: |
-                Release ${{ github.sha }}
             draft: false
             prerelease: false
 
