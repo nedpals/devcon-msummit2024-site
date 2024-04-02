@@ -38,9 +38,9 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
+            name: Release ${{ github.sha }}
             files: theme.zip
             tag_name: release-${{ github.sha }}
-            release_name: Release ${{ github.sha }}
             body: |
                 Release ${{ github.sha }}
             draft: false
