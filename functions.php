@@ -209,3 +209,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 if (class_exists('Kirki')) {
 	require get_template_directory() . '/inc/kirki-customizer.php';
 }
+
+/**
+ * Load TGMPA file.
+ */
+require get_template_directory() . '/inc/tgm.php';
