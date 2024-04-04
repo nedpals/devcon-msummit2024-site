@@ -10,11 +10,13 @@ __dir__ = os.path.dirname(os.path.realpath(__file__))
 
 # modify inc/auto-updater.php if GH_USERNAME and GH_REPO are defined
 if 'GH_USERNAME' in os.environ and 'GH_REPO' in os.environ:
-    with open(os.path.join(__dir__, 'inc', 'auto-updater.php'), 'rw') as file:
+    with open(os.path.join(__dir__, 'inc', 'auto-updater.php'), 'r+') as file:
         data = file.read()
         data = data.replace('GH_USERNAME', os.environ['GH_USERNAME'])
         data = data.replace('GH_REPO', os.environ['GH_REPO'])
+        file.seek(0)
         file.write(data)
+        file.truncate()
 
     # include the auto-updater.php inside functions.php
     with open(os.path.join(__dir__, 'functions.php'), 'a') as file:
