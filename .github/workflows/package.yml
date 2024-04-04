@@ -1,4 +1,4 @@
-# CWordPress theme packager workflow
+# WordPress theme packager workflow
 name: Package WordPress Theme
 
 on:
@@ -29,16 +29,25 @@ jobs:
         - name: Build theme
           run: npm ci && npm run build
 
+        # Set the THEME_VERSION environment variable
+        # to the unix timestamp of the date it was built (e.g. 1640000000)
+        - name: Set theme version
+          run: echo "THEME_VERSION=$(date +%s)" >> $GITHUB_ENV
+
         - name: Run package.py
+          env:
+            THEME_VERSION: ${{ env.THEME_VERSION }}
+            GH_USERNAME: ${{ github.event.repository.owner.login }}
+            GH_REPO: ${{ github.event.repository.name }}
           run: python package.py
 
         - name: Create release
           id: create_release
           uses: softprops/action-gh-release@v2
           with:
-            name: Release ${{ github.sha }}
+            name: Theme release
             files: theme.zip
-            tag_name: release-${{ github.sha }}
+            tag_name: release-${{ env.THEME_VERSION }}
             draft: false
             prerelease: false
 
