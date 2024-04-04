@@ -17,8 +17,8 @@ $contact_us_link = devcon_msummit2024_get_theme_mod('contact_us_link', '');
             </a>
 
             <!-- hamburger -->
-            <button class="hamburger-menu bg-transparent px-4 py-1 border-0 hover:bg-white/10 transition-colors">
-                <svg class="h-6 w-6 text-white lg:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            <button class="lg:hidden hamburger-menu bg-transparent px-4 py-1 border-0 hover:bg-white/10 transition-colors">
+                <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                      xmlns="http://www.w3.org/2000/svg">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                           d="M4 6h16M4 12h16m-7 6h7"></path>
