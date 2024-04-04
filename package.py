@@ -24,10 +24,12 @@ if 'GH_USERNAME' in os.environ and 'GH_REPO' in os.environ:
 
 # modify style.css if THEME_VERSION is defined
 if 'THEME_VERSION' in os.environ:
-    with open(os.path.join(__dir__, 'style.css'), 'rw') as file:
+    with open(os.path.join(__dir__, 'style.css'), 'r+') as file:
         data = file.read()
         data = data.replace('Version: 1.0.0', f"Version: {os.environ['THEME_VERSION']}")
+        file.seek(0)
         file.write(data)
+        file.truncate()
 
 # Package the theme
 theme_name = os.path.basename(os.path.normpath(__dir__))
