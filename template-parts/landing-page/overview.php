@@ -24,7 +24,7 @@ $activities = devcon_msummit2024_get_theme_mod('overview_activities', []);
 					<div class="overview w-1/2 lg:w-1/4 px-4 pb-4 pt-20">
 						<div class="flex flex-col items-center text-center shadow-md bg-white/5 px-6 py-4 rounded-2xl h-full">
                             <div class="overview-icon rounded-full p-8 -mt-20 bg-gradient-to-b from-[rgba(255,221,0,0.371)] via-[rgba(225,195,0,0)] to-transparent">
-                                <img src="<?php echo $activity['image'] ?>" class="rounded-full h-[60px] w-[60px]" alt="<?php echo $activity['name'] ?>">
+                                <img src="<?php echo $activity['image'] ?>" class="h-[60px] w-[60px]" alt="<?php echo $activity['name'] ?>">
                             </div>
 							<div class="pt-8">
 								<h3 class="text-xl font-extrabold"><?php echo $activity['name'] ?></h3>
