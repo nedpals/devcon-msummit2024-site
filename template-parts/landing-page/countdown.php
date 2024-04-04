@@ -9,7 +9,7 @@ $countdown_labels = [
 ];
 ?>
 
-<section class="py-24">
+<section class="py-24 overflow-x-hidden">
 	<div class="relative pb-12">
 		<div class="max-w-3xl mx-auto w-full relative section-heading">
 			<h2><?php echo $sectionTitle ?></h2>

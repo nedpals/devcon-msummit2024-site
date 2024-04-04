@@ -30,7 +30,7 @@ if (!empty($curator_feed_id)) {
 }
 ?>
 
-<section class="py-24 relative">
+<section class="py-24 relative overflow-x-hidden">
 	<!-- Show full version of background image for larger screens -->
 	<div style="background-image: url(<?php devcon_msummit2024_get_asset_url('overview_bg.png') ?>)"
 	     class="hidden 2xl:block absolute top-0 inset-x-0 bg-no-repeat bg-contain bg-left-bottom h-full w-full"></div>
