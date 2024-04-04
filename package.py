@@ -12,8 +12,8 @@ __dir__ = os.path.dirname(os.path.realpath(__file__))
 if 'GH_USERNAME' in os.environ and 'GH_REPO' in os.environ:
     with open(os.path.join(__dir__, 'inc', 'auto-updater.php'), 'r+') as file:
         data = file.read()
-        data = data.replace('GH_USERNAME', os.environ['GH_USERNAME'])
-        data = data.replace('GH_REPO', os.environ['GH_REPO'])
+        data = data.replace('{{GH-USERNAME}}', os.environ['GH_USERNAME'])
+        data = data.replace('{{GH-REPO-NAME}}', os.environ['GH_REPO'])
         file.seek(0)
         file.write(data)
         file.truncate()
