@@ -57,8 +57,10 @@ $args = wp_parse_args($args, [
 						</div>
 
 						<div class="h-full flex flex-col justify-between pt-4">
-							<p class="text-sm text-white/90"><?php echo $package['description'] ?></p>
-							<a href="<?php echo $sponsorship_cta_link; ?>" class="btn btn-white w-full text-center block mt-4">Order Now</a>
+							<?php $final_sponsorship_link = str_replace("[title]", $package['title'], $sponsorship_cta_link); ?>
+
+                            <p class="text-sm text-white/90"><?php echo $package['description'] ?></p>
+                            <a href="<?php echo esc_url($final_sponsorship_link); ?>" target="_blank" class="btn btn-white w-full text-center block mt-4">Order Now</a>
 						</div>
 					</div>
 				</div>
