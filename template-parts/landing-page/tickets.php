@@ -34,6 +34,7 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 
 		<div class="flex flex-wrap items-center -mx-4">
             <?php foreach ($ticketTiers as $tierIdx => $tier) { ?>
+                <?php $status = array_key_exists('status', $tier) ? $tier['status'] : "coming_soon" ?>
 	            <?php $price = Money::of($tier['price'], 'PHP') ?>
                 <?php if ($tier['discount']) { ?>
                     <?php $discounted = $price->multipliedBy($tier['discount']); ?>
@@ -74,9 +75,21 @@ $ticketTiers = devcon_msummit2024_get_theme_mod('tickets', []);
 							</div>
 						</div>
 
-                        <a href="<?php echo $tier['link'] ?>" target="_blank" class="btn btn-primary flex flex-col space-y-0.5 w-full text-center mt-4">
-                            <span class="font-normal">Get It</span>
-                            <span class="text-3xl"><?php echo $price->formatWith($numFmt) ?></span>
+                        <a href="<?php echo $status === 'available' ? $tier['link'] : '#' ?>" target="_blank"
+                           class="btn btn-primary flex flex-col space-y-0.5 w-full text-center mt-4 <?php echo $status !== 'available' ? "pointer-events-none !bg-gray-300 opacity-50" : "" ?>">
+                            <span class="font-normal">
+                                <?php if ($status === 'available') { ?>
+                                    Get It
+                                <?php } else if ($status === 'coming_soon') { ?>
+                                    Coming Soon
+                                <?php } else { ?>
+                                    Sold Out
+                                <?php } ?>
+                            </span>
+
+                            <?php if ($status !== 'coming_soon') { ?>
+                                <span class="text-3xl"><?php echo $price->formatWith($numFmt) ?></span>
+                            <?php } ?>
                         </a>
 					</div>
 				</div>

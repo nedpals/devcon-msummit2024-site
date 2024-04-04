@@ -588,6 +588,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			'header_class' => '',
 			'price' => 2500,
 			'discount' => 0.3,
+			'status' => 'available',
 			'perks' => implode("\n", [
 				'Access to all sessions scheduled for Day 1 (June 29, 2024)',
 				'Exclusive merch',
@@ -601,6 +602,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			'link' => 'https://tickets.devcon.ph/products/vip-ticket-5',
 			'header_class' => '',
 			'price' => 10000,
+			'status' => 'coming_soon',
 			'perks' => implode("\n", [
 				'Access to all sessions scheduled for 2 Days (June 29 & 30, 2024)',
 				'Exclusive merch, raffle entry and free lunch for 2 days!',
@@ -617,6 +619,7 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 			'header_class' => '',
 			'price' => 3500,
 			'discount' => 0.3,
+			'status' => 'sold_out',
 			'perks' => implode("\n", [
 				'Access to all sessions scheduled for 2 Days (June 29 & 30, 2024)',
 				'Exclusive merch',
@@ -652,6 +655,16 @@ function devcon_msummit2024_setup_landing_page_customize_section(WP_Customize_Ma
 				'type' => 'text',
 				'label' => __('Label', 'devcon-msummit2024'),
 				'default' => 'Ticket Label',
+			],
+			'status' => [
+				'type' => 'select',
+				'label' => __('Status', 'devcon-msummit2024'),
+				'default' => 'available',
+				'choices' => [
+					'available' => __('Available', 'devcon-msummit2024'),
+					'sold_out' => __('Sold Out', 'devcon-msummit2024'),
+					'coming_soon' => __('Coming Soon', 'devcon-msummit2024'),
+				],
 			],
 			'link' => [
 				'type' => 'text',
