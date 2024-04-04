@@ -141,11 +141,12 @@ $customTemplateTags = [
 
 function devcon_msummit2024_add_setting(WP_Customize_Manager $wp_customize, string $id, array $args = []): WP_Customize_Setting {
 	$mod_id = devcon_msummit2024_get_mod_id($id);
+	$setting = $wp_customize->add_setting($mod_id, $args);
 	// Set default value only if theme mod $mod_id is not set!
-	if (!get_theme_mod($mod_id) && $args && array_key_exists('default', $args)) {
-		set_theme_mod($mod_id, $args['default']);
+	if (get_theme_mod($mod_id, null) === null && $args && array_key_exists('default', $args)) {
+		 set_theme_mod($mod_id, $args['default']);
 	}
-	return $wp_customize->add_setting($mod_id, $args);
+	return $setting;
 }
 
 function devcon_msummit2024_render_text($setting_name, $default = null, $return = false) {
@@ -1199,7 +1200,7 @@ function devcon_msummit2024_generate_per_section_settings(WP_Customize_Manager $
 	]);
 
 	foreach ($page_sections as $section) {
-		$sectionId = devcon_msummit2024_get_mod_id( $section_prefix . $section['id']);
+		$sectionId = $section_prefix . $section['id'];
 
 		// Add setting for showing specific section
 		$section_show_setting = devcon_msummit2024_add_setting($wp_customize, $sectionId . '_enabled', [
