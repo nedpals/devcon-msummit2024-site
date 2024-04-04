@@ -19,9 +19,9 @@ function automatic_gh_updates($data) {
 
 	if($file) {
 		// Strip the version number of any non-numerical characters
-		$update = preg_replace('/[^0-9.].*/', '', $file->tag_name);
+		$update = preg_replace('/release-/', '', $file->tag_name);
 		// Only return a response if the new version number is higher than the current version
-		if($update > $current) {
+		if((int) $update > (int) $current) {
 			$data->response[$theme] = array(
 				'theme'       => $theme,
 				'new_version' => $update,
