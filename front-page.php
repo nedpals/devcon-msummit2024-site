@@ -22,6 +22,7 @@ $page_sections = [
         'alternating_texts' => devcon_msummit2024_get_theme_mod('hero_alternating_texts', ''),
 	    'cta_button_text' => devcon_msummit2024_render_text('cta_button_text', return: true),
 	    'cta_button_url' => devcon_msummit2024_get_theme_mod('cta_button_url', ''),
+	    'inner_container_padding' => 'py-16 md:py-32 h-[93vh] md:h-auto',
     ]); ?>
 	<?php devcon_msummit2024_load_page_sections($page_sections,'upper', 'landing-page'); ?>
 </div>
