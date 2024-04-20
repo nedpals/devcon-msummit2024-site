@@ -11,6 +11,7 @@ $args = wp_parse_args($args, [
     'cta_button_text' => '',
     'cta_button_url' => '',
     'background_waves' => true,
+    'hero_title_classes' => 'text-6xl tracking-wide',
     'container_width_class' => 'container',
     'outer_container_padding' => 'pt-16',
     'inner_container_padding' => 'py-32',
@@ -35,7 +36,7 @@ $args = wp_parse_args($args, [
 				<img src="<?php devcon_msummit2024_get_asset_url('summit_logo.png') ?>"
 				     alt="<?php echo get_bloginfo('name') ?>" />
 
-				<h1 class="uppercase text-6xl font-extrabold leading-0 md:tracking-wide table-caption sm:block [word-spacing:9999rem] sm:[word-spacing:unset] w-full"><?php echo $args['title'] ?></h1>
+				<h1 class="uppercase font-extrabold leading-0 w-full <?php echo $args['hero_title_classes'] ?>"><?php echo $args['title'] ?></h1>
 
                 <?php if (!empty($args['content'])) { ?>
 				    <p class="font-light text-lg"><?php echo $args['content'] ?></p>

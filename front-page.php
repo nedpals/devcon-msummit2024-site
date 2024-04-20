@@ -23,6 +23,7 @@ $page_sections = [
 	    'cta_button_text' => devcon_msummit2024_render_text('cta_button_text', return: true),
 	    'cta_button_url' => devcon_msummit2024_get_theme_mod('cta_button_url', ''),
 	    'inner_container_padding' => 'py-16 md:py-32 h-[93vh] md:h-auto',
+        'hero_title_classes' => 'text-6xl md:tracking-wide table-caption sm:block [word-spacing:9999rem] sm:[word-spacing:unset]',
     ]); ?>
 	<?php devcon_msummit2024_load_page_sections($page_sections,'upper', 'landing-page'); ?>
 </div>
