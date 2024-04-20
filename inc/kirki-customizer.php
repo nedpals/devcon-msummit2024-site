@@ -135,7 +135,7 @@ $customTemplateTags = [
 		return '<span class="type-effect" id="alternating-text"></span>';
 	},
 	'[devcon_logo]' => function() {
-		return '<img class="inline mr-0 -mt-2" src="'. devcon_msummit2024_get_asset_url('devcon_logo_2.png', true) .'" alt="DEVCON">';
+		return '<img class="inline h-[1em] !w-auto mr-0 -mt-2" src="'. devcon_msummit2024_get_asset_url('devcon_logo_2.png', true) .'" alt="DEVCON">';
 	},
 ];
 
