@@ -5,12 +5,12 @@ jQuery(function ($) {
         const answer = $(this).next();
 
         if (answer.is(":visible")) {
-            $(this).children("svg").removeAttr("style");
+            $(this).children("svg").attr("style", "transform: rotate(180deg)");
             answer.slideUp();
         } else {
-            panels.prev().children("svg").removeAttr("style");
+            panels.prev().children("svg").attr("style", "transform: rotate(180deg)");
             panels.slideUp();
-            $(this).children("svg").attr("style", "transform: rotate(180deg)");
+            $(this).children("svg").attr("style", "transform: rotate(0deg)");
             $(this).next().slideDown();
         }
 

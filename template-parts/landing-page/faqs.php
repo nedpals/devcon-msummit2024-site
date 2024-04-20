@@ -15,7 +15,7 @@
                         <div class="faq-question transition-transform cursor-pointer px-8 flex items-start">
                             <p class="font-bold py-6 flex-1"><?php echo $faqItem['question'] ?></p>
 
-                            <svg class="mt-5" xmlns="http://www.w3.org/2000/svg" fill="none" width="40" height="40" viewBox="0 0 40 40">
+                            <svg style="transform: rotate(180deg)" class="mt-5" xmlns="http://www.w3.org/2000/svg" fill="none" width="40" height="40" viewBox="0 0 40 40">
                                 <path fill="#fff" d="M20 12.5 32.5 25l-1.75 1.75L20 16 9.25 26.75 7.5 25 20 12.5Z"/>
 							</svg>
 						</div>
